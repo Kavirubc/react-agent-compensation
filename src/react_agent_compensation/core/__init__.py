@@ -38,6 +38,10 @@ from react_agent_compensation.core.recovery_manager import (
     RecoveryResult,
     RollbackResult,
 )
+from react_agent_compensation.core.extraction import (
+    CompensationSchema,
+    create_extraction_strategy,
+)
 
 __all__ = [
     # Models
@@ -65,4 +69,7 @@ __all__ = [
     "RecoveryManager",
     "RecoveryResult",
     "RollbackResult",
+    # Extraction
+    "CompensationSchema",
+    "create_extraction_strategy",
 ]
