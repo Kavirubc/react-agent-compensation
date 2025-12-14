@@ -84,10 +84,10 @@ def create_compensated_agent(
         result = agent.invoke({"messages": [("user", "Book a trip")]})
     """
     try:
-        from langchain.agents import create_react_agent
+        from langgraph.prebuilt import create_react_agent
     except ImportError as e:
         raise ImportError(
-            "LangChain is required. Install with: pip install langchain langgraph"
+            "LangGraph is required. Install with: pip install langgraph"
         ) from e
 
     # Build middleware stack
@@ -113,7 +113,7 @@ def create_compensated_agent(
         model,
         tools=tools,
         checkpointer=checkpointer,
-        state_modifier=system_prompt,
+        prompt=system_prompt,
     )
 
     # Store middleware reference for access

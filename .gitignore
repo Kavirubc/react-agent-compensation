@@ -84,3 +84,5 @@ Thumbs.db
 # Local development
 *.local
 .envrc
+
+.env
