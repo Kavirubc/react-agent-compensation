@@ -25,6 +25,7 @@ from react_agent_compensation.core.exceptions import (
     RollbackFailure,
 )
 from react_agent_compensation.core.models import ActionRecord, ActionStatus
+from react_agent_compensation.core.transaction_log import TransactionLog
 from react_agent_compensation.core.protocols import (
     ActionExecutor,
     ActionResult,
@@ -37,6 +38,7 @@ __all__ = [
     # Models
     "ActionRecord",
     "ActionStatus",
+    "TransactionLog",
     # Config
     "RetryPolicy",
     "CompensationPairs",
