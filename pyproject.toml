@@ -40,6 +40,11 @@ langchain = [
     "langchain>=0.3.0",
     "langgraph>=0.2.0",
 ]
+mcp = [
+    "langchain-mcp-adapters>=0.1.0",
+    "mcp>=1.0.0",
+    "fastmcp>=2.0.0",
+]
 llm = [
     "openai>=1.0.0",
     "anthropic>=0.20.0",
@@ -51,8 +56,14 @@ dev = [
     "ruff>=0.1.0",
     "mypy>=1.0",
 ]
+examples = [
+    "langchain-google-genai>=2.0.0",
+    "python-dotenv>=1.0.0",
+    "langsmith>=0.1.0",
+    "pymongo>=4.0.0",
+]
 all = [
-    "react-agent-compensation[langchain,llm,dev]",
+    "react-agent-compensation[langchain,mcp,llm,dev,examples]",
 ]
 
 [project.urls]

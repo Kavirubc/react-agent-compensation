@@ -13,11 +13,21 @@ Quick Start:
     )
     result = agent.invoke({"messages": [("user", "Book me a flight")]})
 
+MCP Integration:
+    from react_agent_compensation.langchain_adaptor import create_compensated_mcp_agent
+
+    agent, client = await create_compensated_mcp_agent(
+        model="gpt-4",
+        mcp_servers={"server": {"url": "http://localhost:8000/sse", "transport": "sse"}},
+    )
+    result = await agent.ainvoke({"messages": [("user", "Add item")]})
+
 Components:
 - CompensationMiddleware: LangChain middleware for recovery/compensation
 - ToolCallInterceptor: Intercepts tool calls with recovery handling
 - LangGraphStateSync: Synchronizes transaction log with LangGraph state
 - create_compensated_agent: Factory function for agents with compensation
+- create_compensated_mcp_agent: Factory for MCP-connected agents with compensation
 """
 
 # Re-export Core components for convenience
@@ -67,6 +77,12 @@ from react_agent_compensation.langchain_adaptor.state import (
     sync_action_log,
 )
 
+# MCP integration
+from react_agent_compensation.langchain_adaptor.mcp import (
+    create_compensated_mcp_agent,
+    load_mcp_tools_with_compensation,
+)
+
 __version__ = "0.1.0"
 
 __all__ = [
@@ -95,6 +111,9 @@ __all__ = [
     "create_compensated_agent",
     "create_multi_agent_log",
     "get_compensation_middleware",
+    # MCP integration
+    "create_compensated_mcp_agent",
+    "load_mcp_tools_with_compensation",
     # State management
     "LangGraphStateSync",
     "get_action_log",
