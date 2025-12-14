@@ -67,8 +67,8 @@ all = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/kaviruhapuarachchi/react-agent-compensation"
-Repository = "https://github.com/kaviruhapuarachchi/react-agent-compensation"
+Homepage = "https://github.com/Kavirubc/react-agent-compensation"
+Repository = "https://github.com/Kavirubc/react-agent-compensation"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/react_agent_compensation"]
