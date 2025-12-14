@@ -33,6 +33,11 @@ from react_agent_compensation.core.protocols import (
     SimpleActionResult,
     ToolSchemaProvider,
 )
+from react_agent_compensation.core.recovery_manager import (
+    RecoveryManager,
+    RecoveryResult,
+    RollbackResult,
+)
 
 __all__ = [
     # Models
@@ -56,4 +61,8 @@ __all__ = [
     "ToolSchemaProvider",
     "LLMProvider",
     "SimpleActionResult",
+    # Recovery
+    "RecoveryManager",
+    "RecoveryResult",
+    "RollbackResult",
 ]
