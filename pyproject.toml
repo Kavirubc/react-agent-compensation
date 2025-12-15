@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "react-agent-compensation"
-version = "0.1.1"
+version = "0.1.2"
 description = "Framework-agnostic compensation/rollback library for ReAct agents"
 readme = "README.md"
 license = "MIT"

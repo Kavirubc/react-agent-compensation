@@ -13,6 +13,21 @@ Quick Start:
     )
     result = agent.invoke({"messages": [("user", "Book me a flight")]})
 
+    # If a tool fails, all previous successful compensatable actions
+    # are automatically rolled back using their compensation tools!
+
+Manual Tool Wrapping:
+    from react_agent_compensation.langchain_adaptor import (
+        wrap_tool_with_compensation,
+        CompensationMiddleware,
+    )
+
+    middleware = CompensationMiddleware(
+        compensation_mapping={"book_flight": "cancel_flight"},
+        tools=[book_flight, cancel_flight],
+    )
+    wrapped_tool = wrap_tool_with_compensation(book_flight, middleware)
+
 MCP Integration:
     from react_agent_compensation.langchain_adaptor import create_compensated_mcp_agent
 
@@ -23,10 +38,11 @@ MCP Integration:
     result = await agent.ainvoke({"messages": [("user", "Add item")]})
 
 Components:
+- create_compensated_agent: Factory function for agents with automatic compensation
+- wrap_tool_with_compensation: Wrap individual tools with compensation tracking
 - CompensationMiddleware: LangChain middleware for recovery/compensation
 - ToolCallInterceptor: Intercepts tool calls with recovery handling
 - LangGraphStateSync: Synchronizes transaction log with LangGraph state
-- create_compensated_agent: Factory function for agents with compensation
 - create_compensated_mcp_agent: Factory for MCP-connected agents with compensation
 """
 
@@ -52,8 +68,9 @@ from react_agent_compensation.langchain_adaptor.adapters import (
     build_tools_cache,
 )
 
-# Agent factory
+# Agent factory and tool wrapping
 from react_agent_compensation.langchain_adaptor.agent import (
+    _wrap_tool_with_compensation as wrap_tool_with_compensation,
     create_compensated_agent,
     create_multi_agent_log,
     get_compensation_middleware,
@@ -107,10 +124,11 @@ __all__ = [
     "InterceptResult",
     # Middleware
     "CompensationMiddleware",
-    # Agent factory
+    # Agent factory and tool wrapping
     "create_compensated_agent",
     "create_multi_agent_log",
     "get_compensation_middleware",
+    "wrap_tool_with_compensation",
     # MCP integration
     "create_compensated_mcp_agent",
     "load_mcp_tools_with_compensation",
