@@ -46,7 +46,10 @@ class RetryPolicy(BaseModel):
     backoff_multiplier: float = Field(default=2.0, ge=1.0)
     jitter: bool = True
     retryable_errors: list[str] = Field(
-        default_factory=lambda: ["timeout", "connection", "rate_limit"]
+        default_factory=lambda: [
+            "timeout", "connection", "rate_limit",
+            "overload", "temporarily", "retry", "busy", "503", "502", "504"
+        ]
     )
 
     def is_retryable_error(self, error: Exception | str) -> bool:

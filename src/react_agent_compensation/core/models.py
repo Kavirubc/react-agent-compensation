@@ -88,3 +88,140 @@ class ActionRecord(BaseModel):
             and not self.compensated
             and self.compensator is not None
         )
+
+
+class FailedAttempt(BaseModel):
+    """Record of a failed action attempt for Strategic Context Preservation.
+
+    Domain-agnostic: tracks what was tried (action + params), not domain-specific
+    resources. This enables the LLM to learn from failures across ANY problem domain.
+
+    Attributes:
+        action: Name of the tool/action that failed
+        params: Parameters that were used in the attempt
+        error: Error message from the failure
+        timestamp: Unix timestamp when the failure occurred
+        attempt_number: Which attempt this was for this action
+        is_permanent: Heuristic flag indicating if failure is likely permanent
+    """
+
+    action: str
+    params: dict[str, Any]
+    error: str
+    timestamp: float = Field(default_factory=time.time)
+    attempt_number: int = 1
+    is_permanent: bool = False
+
+    def params_signature(self) -> str:
+        """Generate a hashable signature of params for deduplication.
+
+        Returns:
+            String representation of sorted params for comparison
+        """
+        return str(sorted(self.params.items()))
+
+
+class FailureContext(BaseModel):
+    """Tracks cumulative failures across retries - domain agnostic.
+
+    Provides the LLM with context about what has been tried and failed,
+    enabling it to make informed decisions about what to try next.
+    This is the core of Strategic Context Preservation.
+
+    Unlike domain-specific approaches (e.g., tracking "broken machines"),
+    this tracks action+params combinations that failed, working for ANY domain.
+
+    Attributes:
+        attempts: List of all failed attempts in chronological order
+    """
+
+    attempts: list[FailedAttempt] = Field(default_factory=list)
+
+    def record_attempt(
+        self,
+        action: str,
+        params: dict[str, Any],
+        error: str,
+        is_permanent: bool = False,
+    ) -> None:
+        """Record a failed attempt.
+
+        Args:
+            action: Name of the action/tool that failed
+            params: Parameters that were used
+            error: Error message from the failure
+            is_permanent: Whether the failure appears permanent
+        """
+        attempt_num = sum(1 for a in self.attempts if a.action == action) + 1
+        self.attempts.append(
+            FailedAttempt(
+                action=action,
+                params=params,
+                error=error,
+                attempt_number=attempt_num,
+                is_permanent=is_permanent,
+            )
+        )
+
+    def get_attempts_for_action(self, action: str) -> list[FailedAttempt]:
+        """Get all failed attempts for a specific action.
+
+        Args:
+            action: Name of the action to filter by
+
+        Returns:
+            List of FailedAttempt objects for that action
+        """
+        return [a for a in self.attempts if a.action == action]
+
+    def has_similar_attempt(self, action: str, params: dict[str, Any]) -> bool:
+        """Check if a similar attempt (same action + params) has failed before.
+
+        Args:
+            action: Name of the action
+            params: Parameters to check
+
+        Returns:
+            True if this exact action+params combination failed before
+        """
+        sig = str(sorted(params.items()))
+        return any(
+            a.action == action and a.params_signature() == sig for a in self.attempts
+        )
+
+    def get_summary(self) -> str:
+        """Generate human-readable summary for LLM context.
+
+        Returns:
+            Formatted string describing cumulative failures for LLM to use
+            in its decision-making. Empty string if no failures recorded.
+        """
+        if not self.attempts:
+            return ""
+
+        lines = ["[PREVIOUS FAILED ATTEMPTS]"]
+
+        # Group by action
+        by_action: dict[str, list[FailedAttempt]] = {}
+        for attempt in self.attempts:
+            by_action.setdefault(attempt.action, []).append(attempt)
+
+        for action, attempts in by_action.items():
+            lines.append(f"\n{action}:")
+            for a in attempts:
+                # Format params concisely
+                param_str = ", ".join(f"{k}={v}" for k, v in a.params.items())
+                permanent_marker = " [PERMANENT]" if a.is_permanent else ""
+                lines.append(
+                    f"  - Attempt {a.attempt_number}: ({param_str}){permanent_marker}"
+                )
+                # Truncate long errors
+                error_preview = a.error[:100] + "..." if len(a.error) > 100 else a.error
+                lines.append(f"    Error: {error_preview}")
+
+        lines.append("\nConsider using different parameters or approaches.")
+        return "\n".join(lines)
+
+    def clear(self) -> None:
+        """Clear all recorded attempts."""
+        self.attempts.clear()

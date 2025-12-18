@@ -37,10 +37,17 @@ def _format_compensation_message(
     recovery_attempts: int,
     compensated_actions: list[str],
     rollback_details: list[dict[str, Any]] | None = None,
+    failure_context_summary: str = "",
+    goals: list[str] | None = None,
 ) -> str:
     """Format an informative message for the LLM after compensation.
 
     This message tells the LLM what happened and that it can try again.
+    Includes Strategic Context Preservation - cumulative failure context
+    to help the LLM make informed decisions about what to try next.
+
+    Goal-Aware Recovery: When goals are provided, reminds the LLM of
+    the optimization objectives to consider when replanning.
 
     Args:
         failed_action: Name of the tool that failed
@@ -48,35 +55,61 @@ def _format_compensation_message(
         recovery_attempts: Number of retry attempts made
         compensated_actions: List of record IDs that were compensated
         rollback_details: Optional details about what was rolled back
+        failure_context_summary: Cumulative failure context for Strategic Context Preservation
+        goals: Optional list of optimization goals to remind the LLM about
 
     Returns:
         Formatted message string for the LLM
     """
-    lines = [
+    lines = []
+
+    # Strategic Context Preservation: Include cumulative failure context FIRST
+    # This helps the LLM understand what has been tried and failed
+    if failure_context_summary:
+        lines.append(failure_context_summary)
+        lines.append("")
+
+    lines.extend([
         f"[COMPENSATION TRIGGERED]",
         f"",
         f"Action '{failed_action}' failed after {recovery_attempts} retry attempt(s).",
         f"Error: {error}",
         f"",
-    ]
+    ])
 
-    if compensated_actions:
-        lines.append(f"Rolled back {len(compensated_actions)} previous action(s):")
+    if compensated_actions or rollback_details:
+        lines.append("[ROLLBACK EXECUTED - THESE ACTIONS WERE CANCELLED]")
         if rollback_details:
             for detail in rollback_details:
                 action = detail.get('action', 'unknown')
                 compensator = detail.get('compensator', 'unknown')
                 params = detail.get('params', {})
-                lines.append(f"  - {action}({params}) → compensated with {compensator}")
-        else:
+                # Format params nicely for LLM understanding
+                param_str = ", ".join(f"{k}={v}" for k, v in params.items())
+                lines.append(f"  - {action}({param_str}) → CANCELLED via {compensator}")
+        elif compensated_actions:
             for record_id in compensated_actions:
-                lines.append(f"  - Record {record_id}")
+                lines.append(f"  - Action {record_id} CANCELLED")
+        lines.append("")
+        lines.append("IMPORTANT: The above actions were rolled back and need to be RE-DONE.")
         lines.append("")
 
-    lines.extend([
-        "State has been reset to before the failed sequence.",
-        "You can now try a different approach or alternative parameters.",
-    ])
+    lines.append("State has been reset to before the failed sequence.")
+    lines.append("")
+
+    # Goal-Aware Recovery: Remind the LLM of optimization objectives
+    if goals:
+        lines.append("[REPLANNING GUIDANCE]")
+        lines.append("You must now create a NEW complete plan that:")
+        lines.append("  1. Re-schedules ALL the cancelled actions listed above")
+        lines.append("  2. Avoids the failed approach (use different parameters/resources)")
+        lines.append("  3. Optimizes for these goals:")
+        for goal in goals:
+            lines.append(f"       - {goal}")
+        lines.append("")
+        lines.append("Think holistically: plan ALL remaining work, not just the next step.")
+    else:
+        lines.append("You can now try a different approach or alternative parameters.")
 
     return "\n".join(lines)
 
@@ -86,6 +119,7 @@ def _wrap_tool_with_compensation(
     middleware: CompensationMiddleware,
     auto_rollback: bool = True,
     auto_recover: bool = True,
+    goals: list[str] | None = None,
 ) -> Any:
     """Wrap a LangChain tool with compensation tracking and recovery.
 
@@ -94,12 +128,14 @@ def _wrap_tool_with_compensation(
     2. On failure: attempts recovery (retry + alternatives)
     3. If recovery fails: triggers rollback of all previous actions
     4. Returns informative message to LLM on failure (enabling retry)
+    5. Includes goal reminders for holistic replanning
 
     Args:
         tool: LangChain tool to wrap
         middleware: CompensationMiddleware instance for tracking
         auto_rollback: Whether to automatically rollback on unrecoverable failure
         auto_recover: Whether to automatically attempt recovery (retry/alternatives)
+        goals: Optional list of optimization goals to include in compensation messages
 
     Returns:
         Wrapped tool with same interface but compensation tracking
@@ -151,6 +187,7 @@ def _wrap_tool_with_compensation(
             recovery_attempts = 0
             compensated_actions = []
             rollback_details = []
+            failure_context_summary = ""
 
             # Step 1: Try recovery (retry + alternatives)
             if auto_recover:
@@ -174,6 +211,13 @@ def _wrap_tool_with_compensation(
                 except Exception as recovery_error:
                     logger.error(f"[COMPENSATION] Recovery error: {recovery_error}")
 
+            # Step 1.5: Get Strategic Context Preservation summary
+            # This includes all previous failed attempts to help the LLM make informed decisions
+            try:
+                failure_context_summary = middleware.rc_manager.get_failure_summary()
+            except Exception as ctx_error:
+                logger.debug(f"[COMPENSATION] Could not get failure context: {ctx_error}")
+
             # Step 2: Recovery failed - trigger rollback
             if auto_rollback:
                 logger.info(f"[COMPENSATION] Triggering rollback due to unrecoverable failure in {tool_name}")
@@ -196,13 +240,16 @@ def _wrap_tool_with_compensation(
                 except Exception as rollback_error:
                     logger.error(f"[COMPENSATION] Rollback failed: {rollback_error}")
 
-            # Step 3: Return informative message to LLM
+            # Step 3: Return informative message to LLM with Strategic Context Preservation
+            # and Goal-Aware Recovery guidance
             return _format_compensation_message(
                 failed_action=tool_name,
                 error=error_msg,
                 recovery_attempts=recovery_attempts,
                 compensated_actions=compensated_actions,
                 rollback_details=rollback_details,
+                failure_context_summary=failure_context_summary,
+                goals=goals,
             )
 
         try:
@@ -309,6 +356,7 @@ def create_compensated_agent(
     cache: Any = None,
     auto_rollback: bool = True,
     auto_recover: bool = True,
+    goals: list[str] | None = None,
 ) -> Any:
     """Create a LangChain agent with recovery and compensation.
 
@@ -345,6 +393,10 @@ def create_compensated_agent(
         cache: Cache configuration
         auto_rollback: Automatically rollback on unrecoverable failure (default: True)
         auto_recover: Automatically attempt recovery via retry/alternatives (default: True)
+        goals: Optional list of optimization goals for Goal-Aware Recovery.
+            When provided, compensation messages will remind the LLM of these
+            goals, enabling holistic replanning instead of just reactive fixes.
+            Example: ["minimize_makespan", "balance_workload", "minimize_idle_time"]
 
     Returns:
         Compiled LangGraph agent with compensation capabilities
@@ -398,6 +450,7 @@ def create_compensated_agent(
                 comp_middleware,
                 auto_rollback=auto_rollback,
                 auto_recover=auto_recover,
+                goals=goals,
             )
             wrapped_tools.append(wrapped_tool)
             tool_name = getattr(tool, 'name', str(tool))

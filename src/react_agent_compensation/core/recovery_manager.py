@@ -17,7 +17,8 @@ from react_agent_compensation.core.exceptions import CriticalFailure, Extraction
 from react_agent_compensation.core.extraction import create_extraction_strategy
 from react_agent_compensation.core.extraction.base import ExtractionStrategy
 from react_agent_compensation.core.extraction.path_resolver import extract_all_values
-from react_agent_compensation.core.models import ActionRecord, ActionStatus
+from react_agent_compensation.core.errors.permanent import is_likely_permanent
+from react_agent_compensation.core.models import ActionRecord, ActionStatus, FailureContext
 from react_agent_compensation.core.protocols import ActionExecutor
 from react_agent_compensation.core.retry import ExponentialBackoffStrategy, RetryContext, RetryStrategy
 from react_agent_compensation.core.transaction_log import TransactionLog
@@ -114,6 +115,7 @@ class RecoveryManager:
         self._agent_id = agent_id
         self._infer_dependencies = infer_dependencies
         self._log = TransactionLog()
+        self._failure_context = FailureContext()
 
     @property
     def log(self) -> TransactionLog:
@@ -124,6 +126,21 @@ class RecoveryManager:
     def compensation_pairs(self) -> CompensationPairs:
         """Get compensation pair mappings."""
         return self._compensation_pairs
+
+    @property
+    def failure_context(self) -> FailureContext:
+        """Access the failure context for cumulative failure tracking."""
+        return self._failure_context
+
+    def get_failure_summary(self) -> str:
+        """Get cumulative failure context summary for LLM.
+
+        Returns:
+            Human-readable summary of all failed attempts, suitable for
+            including in error messages to help the LLM make informed
+            decisions about what to try next.
+        """
+        return self._failure_context.get_summary()
 
     def is_compensatable(self, action: str) -> bool:
         """Check if an action has a compensation pair."""
@@ -213,6 +230,16 @@ class RecoveryManager:
         record = self._log.get(record_id)
         if not record:
             return RecoveryResult(success=False, error=f"Record {record_id} not found")
+
+        # Record this failed attempt for Strategic Context Preservation
+        error_str = str(error)
+        is_permanent = is_likely_permanent(error_str)
+        self._failure_context.record_attempt(
+            action=record.action,
+            params=record.params,
+            error=error_str,
+            is_permanent=is_permanent,
+        )
 
         # Try retries first
         context = RetryContext(
@@ -347,8 +374,9 @@ class RecoveryManager:
         raise RuntimeError("No executor available for compensation")
 
     def clear(self) -> None:
-        """Clear the transaction log."""
+        """Clear the transaction log and failure context."""
         self._log.clear(agent_id=self._agent_id)
+        self._failure_context.clear()
 
     def add_compensation_pair(self, forward: str, compensator: str) -> None:
         """Add a compensation pair at runtime.

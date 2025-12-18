@@ -16,6 +16,9 @@ A framework-agnostic compensation/rollback library for ReAct agents. Automatical
 - **Dependency Tracking**: Topological sort ensures correct rollback order
 - **Multi-Agent Support**: Shared transaction logs across multiple agents
 - **Extraction Strategies**: Multiple ways to extract compensation parameters (schema, heuristic, LLM-based)
+- **Strategic Context Preservation** *(v0.2.0)*: Tracks cumulative failures to help LLM make informed decisions about what to try next
+- **Goal-Aware Recovery** *(v0.2.0)*: Reminds LLM of optimization objectives during replanning for holistic decision-making
+- **Permanent Failure Detection** *(v0.2.0)*: Classifies errors as permanent vs transient to guide retry strategies
 
 ## Installation
 
@@ -144,6 +147,53 @@ rollback_result = manager.rollback()
 print(f"Rolled back: {rollback_result.compensated}")
 ```
 
+### Goal-Aware Recovery (v0.2.0)
+
+Enable holistic replanning with optimization goals:
+
+```python
+from react_agent_compensation.langchain_adaptor import create_compensated_agent
+
+# Create agent with optimization goals
+agent = create_compensated_agent(
+    model=ChatOpenAI(model="gpt-4"),
+    tools=[book_flight, cancel_flight, reserve_hotel, cancel_hotel],
+    compensation_pairs={
+        "book_flight": "cancel_flight",
+        "reserve_hotel": "cancel_hotel",
+    },
+    goals=["minimize_total_cost", "prefer_direct_flights", "maximize_loyalty_points"],
+)
+
+# When failures occur, the LLM receives:
+# 1. Cumulative failure context (what was tried and failed)
+# 2. List of rolled-back actions that need re-doing
+# 3. Reminder of optimization goals for holistic replanning
+```
+
+### Strategic Context Preservation (v0.2.0)
+
+Access cumulative failure context programmatically:
+
+```python
+from react_agent_compensation.core import RecoveryManager
+
+manager = RecoveryManager(compensation_pairs={"book": "cancel"})
+
+# After failures, get summary for LLM context
+failure_summary = manager.get_failure_summary()
+# Returns formatted summary like:
+# [PREVIOUS FAILED ATTEMPTS]
+# book:
+#   - Attempt 1: (dest=NYC) [PERMANENT]
+#     Error: Flight unavailable due to weather
+# Consider using different parameters or approaches.
+
+# Access failure context directly
+for attempt in manager.failure_context.attempts:
+    print(f"{attempt.action}: {attempt.error} (permanent={attempt.is_permanent})")
+```
+
 ## MCP Server Setup
 
 Create an MCP server with compensation annotations:
@@ -267,6 +317,9 @@ See the [examples](./examples) directory for complete working examples:
 | `TransactionLog` | Stores and manages action records |
 | `ActionRecord` | Individual action with status and metadata |
 | `RetryPolicy` | Configuration for retry behavior |
+| `FailureContext` | Tracks cumulative failures for Strategic Context Preservation |
+| `FailedAttempt` | Record of a single failed attempt |
+| `is_likely_permanent` | Heuristic to classify errors as permanent vs transient |
 
 ### LangChain Adaptor
 

@@ -118,9 +118,14 @@ class ToolCallInterceptor:
                         error=error_msg,
                         rolled_back=True,
                         rollback_message=rollback.message,
+                        failure_context_summary=self.rc_manager.get_failure_summary(),
                     )
 
-                return InterceptResult(success=False, error=error_msg)
+                return InterceptResult(
+                    success=False,
+                    error=error_msg,
+                    failure_context_summary=self.rc_manager.get_failure_summary(),
+                )
 
             # Success - mark completed
             if record:
@@ -157,9 +162,15 @@ class ToolCallInterceptor:
                     error=error_msg,
                     rolled_back=True,
                     rollback_message=rollback.message,
+                    failure_context_summary=self.rc_manager.get_failure_summary(),
                 )
 
-            return InterceptResult(success=False, error=error_msg, exception=e)
+            return InterceptResult(
+                success=False,
+                error=error_msg,
+                exception=e,
+                failure_context_summary=self.rc_manager.get_failure_summary(),
+            )
 
     def _execute_tool(self, name: str, params: dict[str, Any]) -> Any:
         """Execute a tool by name."""
@@ -190,6 +201,7 @@ class InterceptResult:
         action_taken: str = "",
         rolled_back: bool = False,
         rollback_message: str = "",
+        failure_context_summary: str = "",
     ):
         """Initialize intercept result.
 
@@ -202,6 +214,7 @@ class InterceptResult:
             action_taken: Recovery action taken ("retry", "alternative")
             rolled_back: Whether rollback was performed
             rollback_message: Message from rollback operation
+            failure_context_summary: Cumulative failure context for LLM
         """
         self.success = success
         self.result = result
@@ -211,6 +224,7 @@ class InterceptResult:
         self.action_taken = action_taken
         self.rolled_back = rolled_back
         self.rollback_message = rollback_message
+        self.failure_context_summary = failure_context_summary
 
     def to_tool_message(self, tool_call_id: str, tool_name: str) -> Any:
         """Convert to LangChain ToolMessage.
@@ -243,8 +257,16 @@ class InterceptResult:
             return self.result if self.success else self.error
 
     def _build_error_content(self) -> str:
-        """Build error message content."""
+        """Build error message content.
+
+        Includes cumulative failure context (Strategic Context Preservation)
+        to help the LLM make informed decisions about what to try next.
+        """
         parts = []
+
+        # Add cumulative failure context FIRST (most important for LLM)
+        if self.failure_context_summary:
+            parts.append(self.failure_context_summary)
 
         if self.rolled_back:
             parts.append("[ROLLBACK COMPLETE]")

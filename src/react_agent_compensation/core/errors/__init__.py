@@ -21,6 +21,7 @@ from react_agent_compensation.core.errors.composite import (
 from react_agent_compensation.core.errors.content import ContentDictStrategy
 from react_agent_compensation.core.errors.exception import ExceptionContentStrategy
 from react_agent_compensation.core.errors.explicit import ExplicitStatusStrategy
+from react_agent_compensation.core.errors.permanent import is_likely_permanent
 
 __all__ = [
     # Base
@@ -35,4 +36,6 @@ __all__ = [
     "NeverErrorStrategy",
     # Factory
     "create_error_detector",
+    # Permanent failure detection
+    "is_likely_permanent",
 ]
