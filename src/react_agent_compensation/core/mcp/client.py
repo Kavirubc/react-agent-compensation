@@ -10,7 +10,13 @@ import logging
 from typing import TYPE_CHECKING, Any
 
 from react_agent_compensation.core.config import CompensationPairs, RetryPolicy
-from react_agent_compensation.core.mcp.parser import discover_compensation_pairs
+from react_agent_compensation.core.extraction import create_extraction_strategy
+from react_agent_compensation.core.mcp.metadata import MCPToolMetadata
+from react_agent_compensation.core.mcp.parser import (
+    build_compensation_pairs_from_metadata,
+    discover_compensation_pairs,
+    discover_tool_metadata,
+)
 from react_agent_compensation.core.mcp.tools import CompensatedMCPTool, wrap_mcp_tools
 from react_agent_compensation.core.recovery_manager import RecoveryManager
 
@@ -67,6 +73,7 @@ class MCPCompensationClient:
 
         self._mcp_client: Any = None
         self._raw_tools: list[Any] = []
+        self._tool_metadata: dict[str, MCPToolMetadata] = {}
         self._tool_schemas: dict[str, dict[str, Any]] = {}
         self._compensation_pairs: CompensationPairs = {}
         self._recovery_manager: RecoveryManager | None = None
@@ -105,18 +112,25 @@ class MCPCompensationClient:
         # Create MCP client
         self._mcp_client = MultiServerMCPClient(self._server_config)
 
-        # Get tools
+        # get tools
         self._raw_tools = await self._mcp_client.get_tools()
         logger.info(f"Loaded {len(self._raw_tools)} tools from MCP servers")
 
-        # Discover compensation pairs from tool schemas
-        await self._discover_pairs()
+        # discover full metadata from tool schemas
+        await self._discover_metadata()
 
-        # Create recovery manager
+        # create extraction strategy with mcp metadata if not provided
+        extraction_strategy = self._extraction_strategy
+        if extraction_strategy is None and self._tool_metadata:
+            extraction_strategy = create_extraction_strategy(
+                mcp_tool_metadata=self._tool_metadata
+            )
+
+        # create recovery manager
         self._recovery_manager = RecoveryManager(
             compensation_pairs=self._compensation_pairs,
             retry_policy=self._retry_policy,
-            extraction_strategy=self._extraction_strategy,
+            extraction_strategy=extraction_strategy,
             action_executor=self._action_executor or self._create_executor(),
         )
 
@@ -132,17 +146,31 @@ class MCPCompensationClient:
             f"MCP client connected with {len(self._compensation_pairs)} compensation pairs"
         )
 
-    async def _discover_pairs(self) -> None:
-        """Discover compensation pairs from MCP tool schemas."""
-        # Try to get raw schemas from MCP sessions for full annotation access
+    async def _discover_metadata(self) -> None:
+        """Discover full metadata from MCP tool schemas."""
+        # try to get raw schemas for full annotation access
         schemas = await self._fetch_raw_schemas()
 
         if schemas:
-            # Use raw MCP schemas (have full annotations)
-            self._compensation_pairs = discover_compensation_pairs(schemas)
-            self._tool_schemas = {s["name"]: s.get("annotations", {}) for s in schemas}
+            # use full metadata discovery
+            self._tool_metadata = discover_tool_metadata(schemas)
+            # build compensation pairs from metadata (handles reversible updates)
+            self._compensation_pairs = build_compensation_pairs_from_metadata(
+                self._tool_metadata
+            )
+            # store schemas for tool wrapping (convert metadata to dict)
+            self._tool_schemas = {
+                name: {
+                    "x-action-type": meta.action_type,
+                    "x-reversible": meta.is_reversible,
+                    "x-destructive": meta.is_destructive,
+                    "x-requires-confirmation": meta.requires_confirmation,
+                    "x-category": meta.category,
+                }
+                for name, meta in self._tool_metadata.items()
+            }
         else:
-            # Fallback to LangChain tool objects
+            # fallback to basic compensation pair discovery
             self._compensation_pairs = discover_compensation_pairs(self._raw_tools)
 
         logger.debug(f"Discovered compensation pairs: {self._compensation_pairs}")
