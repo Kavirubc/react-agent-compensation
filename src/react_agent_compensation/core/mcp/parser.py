@@ -28,6 +28,11 @@ if TYPE_CHECKING:
     from react_agent_compensation.core.protocols import ToolSchemaProvider
     from react_agent_compensation.core.recovery_manager import RecoveryManager
 
+from react_agent_compensation.core.mcp.metadata import (
+    MCPToolMetadata,
+    get_compensator,
+    parse_tool_metadata,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -230,3 +235,63 @@ def validate_mcp_schema(schema: dict[str, Any]) -> list[str]:
                     errors.append("Field 'x-compensation-pair' must be a non-empty string")
 
     return errors
+
+
+def discover_tool_metadata(
+    tools: list["ToolSchemaProvider"] | list[dict[str, Any]],
+) -> dict[str, MCPToolMetadata]:
+    """Discover full metadata from MCP tool schemas.
+
+    Scans a list of tools and extracts all annotation metadata
+    including action type, reversibility, and compensation pairs.
+
+    Args:
+        tools: List of tools (either ToolSchemaProvider objects or dicts)
+
+    Returns:
+        Dict mapping tool names to MCPToolMetadata objects
+
+    Example:
+        tools = [
+            {"name": "get_items", "annotations": {"x-action-type": "read"}},
+            {"name": "update_item", "annotations": {"x-action-type": "update", "x-reversible": True}},
+        ]
+        metadata = discover_tool_metadata(tools)
+        # Returns: {"get_items": MCPToolMetadata(...), "update_item": MCPToolMetadata(...)}
+    """
+    result: dict[str, MCPToolMetadata] = {}
+
+    for tool in tools:
+        schema = _get_tool_schema(tool)
+        if schema:
+            metadata = parse_tool_metadata(schema)
+            if metadata:
+                result[metadata.name] = metadata
+                logger.debug(f"Discovered metadata for tool: {metadata.name}")
+
+    return result
+
+
+def build_compensation_pairs_from_metadata(
+    metadata_dict: dict[str, MCPToolMetadata],
+) -> dict[str, str]:
+    """Build compensation pairs mapping from tool metadata.
+
+    Uses get_compensator() to handle both explicit pairs and
+    self-compensating reversible updates.
+
+    Args:
+        metadata_dict: Dict of tool name to MCPToolMetadata
+
+    Returns:
+        Dict mapping tool names to their compensator tool names
+    """
+    pairs: dict[str, str] = {}
+
+    for name, metadata in metadata_dict.items():
+        compensator = get_compensator(metadata)
+        if compensator:
+            pairs[name] = compensator
+            logger.debug(f"Built compensation pair: {name} -> {compensator}")
+
+    return pairs

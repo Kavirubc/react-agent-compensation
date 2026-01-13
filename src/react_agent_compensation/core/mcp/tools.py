@@ -76,6 +76,18 @@ class CompensatedMCPTool:
         """Check if this tool has a compensation pair."""
         return self._manager.is_compensatable(self.name)
 
+    @property
+    def should_track(self) -> bool:
+        """Check if this action should be tracked for compensation.
+
+        Skips tracking for read operations (no side effects).
+        """
+        # check action type from metadata
+        action_type = self._metadata.get("x-action-type")
+        if action_type == "read":
+            return False
+        return self.is_compensatable
+
     def invoke(self, input: dict[str, Any], config: dict | None = None) -> str:
         """Invoke the tool with compensation tracking.
 
@@ -88,8 +100,8 @@ class CompensatedMCPTool:
         """
         record = None
 
-        # Only record if compensatable
-        if self.is_compensatable:
+        # only record if should track (skips read operations)
+        if self.should_track:
             record = self._manager.record_action(self.name, input)
             logger.debug(f"Recorded compensatable action: {self.name} (id={record.id})")
 
@@ -131,12 +143,13 @@ class CompensatedMCPTool:
         """
         record = None
 
-        if self.is_compensatable:
+        # only record if should track (skips read operations)
+        if self.should_track:
             record = self._manager.record_action(self.name, input)
             logger.debug(f"Recorded compensatable action: {self.name} (id={record.id})")
 
         try:
-            # Execute the underlying tool (async)
+            # execute the underlying tool (async)
             result = await self._inner.ainvoke(input, config=config)
 
             if self._is_error_result(result):

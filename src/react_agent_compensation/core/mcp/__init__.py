@@ -25,8 +25,17 @@ from react_agent_compensation.core.mcp.client import (
     MCPCompensationClient,
     MCPToolExecutor,
 )
+from react_agent_compensation.core.mcp.metadata import (
+    MCPToolMetadata,
+    get_compensator,
+    is_compensatable,
+    parse_tool_metadata,
+    should_track_action,
+)
 from react_agent_compensation.core.mcp.parser import (
+    build_compensation_pairs_from_metadata,
     discover_compensation_pairs,
+    discover_tool_metadata,
     parse_mcp_schema,
     register_from_mcp,
     validate_mcp_schema,
@@ -41,6 +50,12 @@ __all__ = [
     # Client
     "MCPCompensationClient",
     "MCPToolExecutor",
+    # Metadata
+    "MCPToolMetadata",
+    "parse_tool_metadata",
+    "should_track_action",
+    "get_compensator",
+    "is_compensatable",
     # Tools
     "CompensatedMCPTool",
     "MCPToolError",
@@ -48,6 +63,8 @@ __all__ = [
     # Parser functions
     "parse_mcp_schema",
     "discover_compensation_pairs",
+    "discover_tool_metadata",
+    "build_compensation_pairs_from_metadata",
     "register_from_mcp",
     "validate_mcp_schema",
 ]

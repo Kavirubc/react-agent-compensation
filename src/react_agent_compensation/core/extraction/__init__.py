@@ -24,6 +24,9 @@ from react_agent_compensation.core.extraction.composite import (
     create_extraction_strategy,
 )
 from react_agent_compensation.core.extraction.heuristic import HeuristicExtractionStrategy
+from react_agent_compensation.core.extraction.mcp_reversible import (
+    MCPReversibleExtractionStrategy,
+)
 from react_agent_compensation.core.extraction.passthrough import PassthroughStrategy
 from react_agent_compensation.core.extraction.path_resolver import (
     extract_all_values,
@@ -49,6 +52,7 @@ __all__ = [
     "HeuristicExtractionStrategy",
     "RecursiveSearchStrategy",
     "PassthroughStrategy",
+    "MCPReversibleExtractionStrategy",
     "CompositeExtractionStrategy",
     # Factory
     "create_extraction_strategy",

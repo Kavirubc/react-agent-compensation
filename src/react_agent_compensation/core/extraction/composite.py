@@ -7,7 +7,10 @@ This module provides:
 
 from __future__ import annotations
 
-from typing import Any, Callable
+from typing import TYPE_CHECKING, Any, Callable
+
+if TYPE_CHECKING:
+    from react_agent_compensation.core.mcp.metadata import MCPToolMetadata
 
 from react_agent_compensation.core.extraction.base import (
     CompensationSchema,
@@ -119,6 +122,7 @@ class CompositeExtractionStrategy(ExtractionStrategy):
 def create_extraction_strategy(
     state_mappers: dict[str, StateMapperFn] | None = None,
     compensation_schemas: dict[str, CompensationSchema] | None = None,
+    mcp_tool_metadata: dict[str, "MCPToolMetadata"] | None = None,
     include_llm: bool = False,
     llm_model: str | None = None,
     raise_on_failure: bool = True,
@@ -126,6 +130,7 @@ def create_extraction_strategy(
     """Factory function to create a configured extraction strategy chain.
 
     Creates a CompositeExtractionStrategy with strategies in priority order:
+    0. MCPReversibleExtractionStrategy (if mcp_tool_metadata provided)
     1. StateMappersStrategy (if state_mappers provided)
     2. SchemaExtractionStrategy (if schemas provided)
     3. HeuristicExtractionStrategy (always)
@@ -136,6 +141,7 @@ def create_extraction_strategy(
     Args:
         state_mappers: Custom mapping functions by tool name
         compensation_schemas: CompensationSchema instances by tool name
+        mcp_tool_metadata: MCP tool metadata for reversible update extraction
         include_llm: If True, adds LLM extraction before passthrough
         llm_model: Model to use for LLM extraction (e.g., "gpt-4o-mini")
         raise_on_failure: Whether to raise error if extraction fails
@@ -158,6 +164,13 @@ def create_extraction_strategy(
         )
     """
     strategies: list[ExtractionStrategy] = []
+
+    # Priority 0: MCP reversible updates (highest priority for self-compensation)
+    if mcp_tool_metadata:
+        from react_agent_compensation.core.extraction.mcp_reversible import (
+            MCPReversibleExtractionStrategy,
+        )
+        strategies.append(MCPReversibleExtractionStrategy(mcp_tool_metadata))
 
     # Priority 1: Developer-provided state mappers
     if state_mappers:
