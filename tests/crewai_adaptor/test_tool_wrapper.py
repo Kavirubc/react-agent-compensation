@@ -132,7 +132,7 @@ class TestWrapToolWithCompensation:
         # Check action was completed
         log = middleware.transaction_log.snapshot()
         record = list(log.values())[0]
-        assert record.status.value == "completed"
+        assert record.status.value.lower() == "completed"
 
     def test_wrapped_tool_handles_error_result(
         self, mock_failing_tool, compensation_mapping

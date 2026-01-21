@@ -65,7 +65,7 @@ class TestStrandsStateSync:
         loaded_ctx = sync.load_failure_context(invocation_state)
 
         # Should have the same failure
-        assert len(loaded_ctx.failed_attempts) == 1
+        assert len(loaded_ctx.attempts) == 1
 
     def test_load_empty_state(self):
         """Test loading from empty state."""

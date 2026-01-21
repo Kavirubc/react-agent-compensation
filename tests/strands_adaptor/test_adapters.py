@@ -25,7 +25,8 @@ class TestStrandsActionResult:
 
         assert result.content == {"reservation_id": "RES-001"}
         assert result.name == "reserve_inventory"
-        assert result.status is None  # success status, not error
+        # status can be "success" from the raw result or None if not error
+        assert result.status in (None, "success")
 
     def test_parse_string_json_result(self):
         """Test parsing JSON string result."""

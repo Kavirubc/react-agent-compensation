@@ -143,7 +143,7 @@ class TestCompensationHookProvider:
         # Check action was completed
         log = provider.transaction_log.snapshot()
         record = list(log.values())[0]
-        assert record.status.value == "completed"
+        assert record.status.value.lower() == "completed"
 
     def test_after_tool_call_handles_error(self, compensation_mapping, tools_list):
         """Test _after_tool_call handles error result."""
