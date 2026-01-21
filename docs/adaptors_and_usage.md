@@ -1040,6 +1040,226 @@ def test_adaptor_records_action():
     assert manager.log.get(record.id).status == ActionStatus.COMPLETED
 ```
 
+## CrewAI Adaptor
+
+The CrewAI adaptor provides full integration with CrewAI's multi-agent orchestration framework. It supports both tool wrapping (primary approach) and global hooks.
+
+### Quick Start
+
+```python
+from crewai import Agent, Task
+from crewai.tools import tool
+from react_agent_compensation.crewai_adaptor import (
+    create_compensated_crew,
+    RetryPolicy,
+)
+
+# Define tools
+@tool("Book Flight")
+def book_flight(destination: str, date: str) -> str:
+    """Book a flight to the destination."""
+    return f'{{"booking_id": "FL-001", "destination": "{destination}"}}'
+
+@tool("Cancel Flight")
+def cancel_flight(booking_id: str) -> str:
+    """Cancel a flight booking."""
+    return f'{{"cancelled": true, "booking_id": "{booking_id}"}}'
+
+# Create agent with tools
+travel_agent = Agent(
+    role="Travel Agent",
+    goal="Book travel arrangements",
+    backstory="Expert travel agent",
+    tools=[book_flight, cancel_flight],
+)
+
+# Create task
+task = Task(
+    description="Book a trip to Paris",
+    agent=travel_agent,
+    expected_output="Booking confirmation",
+)
+
+# Create compensated crew
+crew = create_compensated_crew(
+    agents=[travel_agent],
+    tasks=[task],
+    compensation_mapping={"Book Flight": "Cancel Flight"},
+    retry_policy=RetryPolicy(max_retries=3),
+    goals=["minimize_cost", "prefer_direct_flights"],
+)
+
+result = crew.kickoff()
+```
+
+### Manual Tool Wrapping
+
+```python
+from react_agent_compensation.crewai_adaptor import (
+    CrewAICompensationMiddleware,
+    wrap_tool_with_compensation,
+)
+
+# Create middleware
+middleware = CrewAICompensationMiddleware(
+    compensation_mapping={"Book Flight": "Cancel Flight"},
+    tools=[book_flight, cancel_flight],
+)
+
+# Wrap individual tools
+wrapped_book = wrap_tool_with_compensation(book_flight, middleware)
+wrapped_cancel = wrap_tool_with_compensation(cancel_flight, middleware)
+```
+
+### Hook-Based Integration
+
+```python
+from react_agent_compensation.crewai_adaptor import (
+    CrewAIHookManager,
+    create_compensation_hooks,
+)
+
+# Create hooks for global registration
+before_hook, after_hook = create_compensation_hooks(middleware)
+
+# Register with CrewAI's hook system
+@before_tool_call
+def my_before_hook(context):
+    before_hook(context)
+
+@after_tool_call
+def my_after_hook(context):
+    after_hook(context)
+```
+
+### API Reference
+
+| Class/Function | Description |
+|----------------|-------------|
+| `create_compensated_crew` | Factory for creating compensated crews |
+| `create_compensated_agent` | Factory for creating compensated agents |
+| `wrap_tool_with_compensation` | Wrap individual tools |
+| `CrewAICompensationMiddleware` | Core middleware class |
+| `CrewAIHookManager` | Hook-based integration |
+| `CrewAIStateSync` | State persistence utilities |
+
+## AWS Strands Adaptor
+
+The Strands adaptor provides native integration with AWS Strands Agents SDK using its HookProvider pattern.
+
+### Quick Start
+
+```python
+from strands import tool
+from react_agent_compensation.strands_adaptor import (
+    create_compensated_agent,
+    RetryPolicy,
+)
+
+# Define tools
+@tool
+def reserve_inventory(product_ids: list, quantity: int = 1) -> str:
+    """Reserve inventory for products."""
+    return '{"reservation_id": "RES-001", "status": "reserved"}'
+
+@tool
+def release_inventory(reservation_id: str) -> str:
+    """Release reserved inventory."""
+    return '{"released": true}'
+
+# Create compensated agent
+agent = create_compensated_agent(
+    system_prompt="You are an order processing assistant.",
+    tools=[reserve_inventory, release_inventory],
+    compensation_mapping={"reserve_inventory": "release_inventory"},
+    retry_policy=RetryPolicy(max_retries=2),
+    goals=["fast_processing"],
+)
+
+# Sync execution
+result = agent("Reserve inventory for SKU001")
+
+# Async execution
+result = await agent.invoke_async("Reserve inventory for SKU001")
+```
+
+### Manual Integration
+
+```python
+from strands import Agent
+from react_agent_compensation.strands_adaptor import (
+    CompensationHookProvider,
+    wrap_tools_with_compensation,
+)
+
+# Create provider
+provider, tools = wrap_tools_with_compensation(
+    tools=[reserve_inventory, release_inventory],
+    compensation_mapping={"reserve_inventory": "release_inventory"},
+)
+
+# Create agent with hooks
+agent = Agent(
+    system_prompt="...",
+    tools=tools,
+    hooks=[provider],
+)
+```
+
+### Human-in-the-Loop Approval
+
+```python
+from react_agent_compensation.strands_adaptor import (
+    CompensationApprovalInterrupt,
+    InteractiveApproval,
+)
+
+# Interactive console approval
+approval = InteractiveApproval(default_approve=True)
+
+interrupt = CompensationApprovalInterrupt(
+    require_approval=["refund_payment"],
+    approval_callback=approval.prompt,
+)
+
+# Or use webhook for production
+from react_agent_compensation.strands_adaptor import create_webhook_interrupt
+
+interrupt = create_webhook_interrupt(
+    require_approval=["refund_payment"],
+    webhook_url="https://your-server.com/approve",
+)
+```
+
+### State Persistence
+
+```python
+from react_agent_compensation.strands_adaptor import StrandsStateSync
+
+sync = StrandsStateSync()
+
+# In hook, load from invocation_state
+def before_tool(event):
+    sync.load_into_manager(event.invocation_state, provider.rc_manager)
+
+# After execution, save back
+def after_tool(event):
+    sync.save_from_manager(event.invocation_state, provider.rc_manager)
+```
+
+### API Reference
+
+| Class/Function | Description |
+|----------------|-------------|
+| `create_compensated_agent` | Factory for creating compensated agents |
+| `CompensationHookProvider` | HookProvider implementation |
+| `wrap_tools_with_compensation` | Manual integration helper |
+| `StrandsStateSync` | State synchronization |
+| `CompensationApprovalInterrupt` | Human-in-the-loop approval |
+| `InteractiveApproval` | Console-based approval |
+| `create_webhook_interrupt` | Webhook-based approval |
+| `create_logging_interrupt` | Audit logging interrupt |
+
 ## Summary
 
 The `react-agent-compensation` core is designed to be framework-agnostic through:
