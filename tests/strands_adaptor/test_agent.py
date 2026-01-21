@@ -85,17 +85,9 @@ class TestAgentIntegration:
     @pytest.mark.skip(reason="Requires Strands installation")
     def test_create_compensated_agent(self):
         """Test creating a compensated agent."""
-        from react_agent_compensation.strands_adaptor import create_compensated_agent
-
-        # Would test agent creation here
-        pass
+        # Would test agent creation here with actual Strands SDK
 
     @pytest.mark.skip(reason="Requires Strands installation")
     def test_agent_async(self):
         """Test async agent execution."""
-        from react_agent_compensation.strands_adaptor import (
-            create_compensated_agent_async,
-        )
-
-        # Would test async agent here
-        pass
+        # Would test async agent here with actual Strands SDK

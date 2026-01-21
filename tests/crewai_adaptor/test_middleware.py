@@ -1,7 +1,5 @@
 """Tests for CrewAI middleware module."""
 
-import pytest
-
 from react_agent_compensation.crewai_adaptor.middleware import CrewAICompensationMiddleware
 from react_agent_compensation.core.config import RetryPolicy
 

@@ -71,17 +71,9 @@ class TestFactoryIntegration:
     @pytest.mark.skip(reason="Requires CrewAI installation")
     def test_create_compensated_crew(self):
         """Test creating a compensated crew."""
-        from crewai import Agent, Task
-
-        from react_agent_compensation.crewai_adaptor import create_compensated_crew
-
-        # Would test crew creation here
-        pass
+        # Would test crew creation here with actual CrewAI SDK
 
     @pytest.mark.skip(reason="Requires CrewAI installation")
     def test_create_compensated_agent(self):
         """Test creating a compensated agent."""
-        from react_agent_compensation.crewai_adaptor import create_compensated_agent
-
-        # Would test agent creation here
-        pass
+        # Would test agent creation here with actual CrewAI SDK

@@ -1,7 +1,5 @@
 """Tests for Strands hooks module."""
 
-import pytest
-
 from react_agent_compensation.strands_adaptor.hooks import (
     CompensationHookProvider,
     format_compensation_message,

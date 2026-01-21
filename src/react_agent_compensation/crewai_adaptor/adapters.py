@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import json
 import uuid
-from typing import Any, Callable
+from typing import Any
 
 
 class CrewAIActionResult:
@@ -92,8 +92,10 @@ class CrewAIActionResult:
             return bool(self._parsed.get("error"))
 
         if isinstance(self._raw, str):
-            error_indicators = ["error", "failed", "failure", "exception"]
-            return any(ind in self._raw.lower() for ind in error_indicators)
+            # Check for explicit error patterns to avoid false positives
+            text = self._raw.strip().lower()
+            error_prefixes = ("error:", "error ", "failed:", "failed ", "failure:", "exception:")
+            return text.startswith(error_prefixes)
 
         return False
 

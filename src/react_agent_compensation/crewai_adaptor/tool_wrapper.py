@@ -282,6 +282,7 @@ def _detect_error(result: Any) -> tuple[bool, str]:
         try:
             parsed = json.loads(result)
         except (json.JSONDecodeError, TypeError):
+            # Not valid JSON, keep original string value for further checks
             pass
 
     # Check dict for error field
@@ -291,10 +292,11 @@ def _detect_error(result: Any) -> tuple[bool, str]:
         if parsed.get("status") == "failed":
             return True, str(parsed.get("message", "Operation failed"))
 
-    # Check string for error indicators
+    # Check string for explicit error patterns to avoid false positives
     if isinstance(result, str):
-        error_indicators = ["error", "failed", "failure", "exception", "unavailable"]
-        if any(ind in result.lower() for ind in error_indicators):
+        text = result.strip().lower()
+        error_prefixes = ("error:", "error ", "failed:", "failed ", "failure:", "exception:")
+        if text.startswith(error_prefixes):
             return True, result
 
     return False, ""

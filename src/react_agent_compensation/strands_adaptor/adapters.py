@@ -110,8 +110,10 @@ class StrandsActionResult:
             return bool(self._parsed.get("error"))
 
         if isinstance(self._parsed, str):
-            error_indicators = ["error", "failed", "failure", "exception"]
-            return any(ind in self._parsed.lower() for ind in error_indicators)
+            # Check for explicit error patterns to avoid false positives
+            text = self._parsed.strip().lower()
+            error_prefixes = ("error:", "error ", "failed:", "failed ", "failure:", "exception:")
+            return text.startswith(error_prefixes)
 
         return False
 

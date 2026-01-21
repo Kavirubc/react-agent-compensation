@@ -1,7 +1,5 @@
 """Tests for Strands state module."""
 
-import pytest
-
 from react_agent_compensation.core.models import FailureContext
 from react_agent_compensation.core.transaction_log import TransactionLog
 from react_agent_compensation.strands_adaptor.state import (

@@ -1,7 +1,5 @@
 """Tests for Strands adapters module."""
 
-import pytest
-
 from react_agent_compensation.strands_adaptor.adapters import (
     SimpleActionResult,
     StrandsActionResult,

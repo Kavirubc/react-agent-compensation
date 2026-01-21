@@ -122,8 +122,12 @@ def create_compensated_crew(
         **crew_kwargs,
     )
 
-    # Store middleware reference for access
-    crew._compensation_middleware = middleware
+    # Store middleware reference for access if possible
+    try:
+        crew._compensation_middleware = middleware
+    except AttributeError:
+        # Some Crew implementations may use __slots__ or restrict dynamic attributes
+        logger.debug("Could not attach middleware reference to Crew instance")
 
     logger.info(
         f"Created compensated crew with {len(agents)} agents, "
@@ -224,8 +228,12 @@ def create_compensated_agent(
         **agent_kwargs,
     )
 
-    # Store middleware reference
-    agent._compensation_middleware = middleware
+    # Store middleware reference if possible
+    try:
+        agent._compensation_middleware = middleware
+    except AttributeError:
+        # Some Agent implementations may use __slots__ or restrict dynamic attributes
+        logger.debug("Could not attach middleware reference to Agent instance")
 
     logger.info(
         f"Created compensated agent '{role}' with "

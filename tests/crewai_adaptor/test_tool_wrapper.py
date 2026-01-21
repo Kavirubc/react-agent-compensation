@@ -1,7 +1,5 @@
 """Tests for CrewAI tool_wrapper module."""
 
-import pytest
-
 from react_agent_compensation.crewai_adaptor.middleware import CrewAICompensationMiddleware
 from react_agent_compensation.crewai_adaptor.tool_wrapper import (
     format_compensation_message,

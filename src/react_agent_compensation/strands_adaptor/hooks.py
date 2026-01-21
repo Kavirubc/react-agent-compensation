@@ -322,6 +322,7 @@ class CompensationHookProvider:
                         if isinstance(parsed, dict) and parsed.get("error"):
                             return True, str(parsed.get("error"))
                     except (json.JSONDecodeError, TypeError):
+                        # Not valid JSON, continue checking other error patterns
                         pass
 
         return False, ""
@@ -365,11 +366,11 @@ class CompensationHookProvider:
             except Exception as recovery_error:
                 logger.error(f"[STRANDS] Recovery error: {recovery_error}")
 
-        # Get failure context
+        # Get failure context (best-effort, ignore errors)
         try:
             failure_context_summary = self._rc_manager.get_failure_summary()
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug(f"[STRANDS] Could not get failure context: {e}")
 
         # Trigger rollback
         if self._auto_rollback:

@@ -281,3 +281,5 @@ When a tool fails:
 
 if __name__ == "__main__":
     run_example()
+    # To run the async example:
+    # asyncio.run(run_example_async())

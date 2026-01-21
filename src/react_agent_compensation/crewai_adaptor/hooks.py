@@ -174,6 +174,7 @@ class CrewAIHookManager:
             try:
                 parsed = json.loads(result)
             except (json.JSONDecodeError, TypeError):
+                # Not valid JSON, keep original string value for further checks
                 pass
 
         # Check dict for error field
@@ -181,10 +182,11 @@ class CrewAIHookManager:
             if parsed.get("error"):
                 return True, str(parsed.get("error"))
 
-        # Check string for error indicators
+        # Check string for explicit error patterns to avoid false positives
         if isinstance(result, str):
-            error_indicators = ["error", "failed", "failure", "exception"]
-            if any(ind in result.lower() for ind in error_indicators):
+            text = result.strip().lower()
+            error_prefixes = ("error:", "error ", "failed:", "failed ", "failure:", "exception:")
+            if text.startswith(error_prefixes):
                 return True, result
 
         return False, ""
@@ -211,11 +213,11 @@ class CrewAIHookManager:
             except Exception as recovery_error:
                 logger.error(f"[HOOK] Recovery error: {recovery_error}")
 
-        # Get failure context
+        # Get failure context (best-effort, ignore errors)
         try:
             failure_context_summary = self._middleware.get_failure_summary()
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug(f"[HOOK] Could not get failure context: {e}")
 
         # Trigger rollback
         if self._auto_rollback:

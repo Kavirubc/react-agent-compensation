@@ -243,6 +243,7 @@ def create_webhook_interrupt(
             return True
 
         try:
+            import ssl
             import urllib.request
             import urllib.error
 
@@ -259,9 +260,16 @@ def create_webhook_interrupt(
                 method="POST",
             )
 
-            with urllib.request.urlopen(req, timeout=timeout) as response:
+            # Use default SSL context for certificate verification
+            ssl_context = ssl.create_default_context()
+
+            with urllib.request.urlopen(req, timeout=timeout, context=ssl_context) as response:
                 result = json.loads(response.read().decode('utf-8'))
-                return result.get("approved", False)
+                # Validate response format before accessing keys
+                if not isinstance(result, dict):
+                    logger.error(f"Webhook response is not a JSON object: {result}")
+                    return False
+                return bool(result.get("approved", False))
 
         except (urllib.error.URLError, json.JSONDecodeError, Exception) as e:
             logger.error(f"Webhook approval failed: {e}")

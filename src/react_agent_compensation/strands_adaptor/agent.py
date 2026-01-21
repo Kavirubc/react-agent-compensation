@@ -107,8 +107,12 @@ def create_compensated_agent(
     # Create agent
     agent = Agent(**kwargs)
 
-    # Store provider reference for access
-    agent._compensation_provider = compensation_provider
+    # Store provider reference for access if possible
+    try:
+        agent._compensation_provider = compensation_provider
+    except AttributeError:
+        # Some Agent implementations may use __slots__ or restrict dynamic attributes
+        logger.debug("Could not attach provider reference to Agent instance")
 
     logger.info(
         f"Created compensated Strands agent with "

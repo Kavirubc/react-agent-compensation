@@ -1,7 +1,5 @@
 """Tests for CrewAI adapters module."""
 
-import pytest
-
 from react_agent_compensation.crewai_adaptor.adapters import (
     CrewAIActionResult,
     CrewAIToolExecutor,
