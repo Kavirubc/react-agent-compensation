@@ -14,6 +14,8 @@ authors = [
 ]
 keywords = [
     "langchain",
+    "crewai",
+    "strands",
     "agents",
     "compensation",
     "rollback",
@@ -45,6 +47,12 @@ mcp = [
     "mcp>=1.0.0",
     "fastmcp>=2.0.0",
 ]
+crewai = [
+    "crewai>=0.80.0",
+]
+strands = [
+    "strands-agents>=0.1.0",
+]
 llm = [
     "openai>=1.0.0",
     "anthropic>=0.20.0",
@@ -63,7 +71,7 @@ examples = [
     "pymongo>=4.0.0",
 ]
 all = [
-    "react-agent-compensation[langchain,mcp,llm,dev,examples]",
+    "react-agent-compensation[langchain,crewai,strands,mcp,llm,dev,examples]",
 ]
 
 [project.urls]

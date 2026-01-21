@@ -8,8 +8,10 @@ A framework-agnostic compensation/rollback library for ReAct agents. Automatical
 
 ## Features
 
-- **Framework-agnostic Core**: Works with any agent framework (LangChain, CrewAI, custom)
+- **Framework-agnostic Core**: Works with any agent framework (LangChain, CrewAI, Strands, custom)
 - **LangChain/LangGraph Integration**: First-class support with middleware and agent factories
+- **CrewAI Integration**: Full support for CrewAI multi-agent orchestration
+- **AWS Strands Integration**: Native HookProvider for Strands Agents SDK
 - **MCP Integration**: Auto-discover compensation pairs from MCP server tool annotations
 - **Automatic Rollback**: When an action fails, all previously completed actions are automatically compensated
 - **Retry Strategies**: Configurable exponential backoff, linear backoff, and fixed delay
@@ -28,6 +30,12 @@ pip install react-agent-compensation
 
 # With LangChain support
 pip install react-agent-compensation[langchain]
+
+# With CrewAI support
+pip install react-agent-compensation[crewai]
+
+# With AWS Strands support
+pip install react-agent-compensation[strands]
 
 # With MCP support (for Model Context Protocol servers)
 pip install react-agent-compensation[mcp]
@@ -82,6 +90,82 @@ for record_id, record in middleware.log.snapshot().items():
 
 # Manual rollback if needed
 middleware.rollback()
+```
+
+### Basic Usage with CrewAI
+
+```python
+from crewai import Agent, Task
+from crewai.tools import tool
+from react_agent_compensation.crewai_adaptor import create_compensated_crew
+
+# Define your tools
+@tool("Book Flight")
+def book_flight(destination: str, date: str) -> str:
+    """Book a flight to a destination."""
+    return f'{{"booking_id": "FL123", "destination": "{destination}"}}'
+
+@tool("Cancel Flight")
+def cancel_flight(booking_id: str) -> str:
+    """Cancel a flight booking."""
+    return f'{{"cancelled": true, "booking_id": "{booking_id}"}}'
+
+# Create agent with tools
+travel_agent = Agent(
+    role="Travel Agent",
+    goal="Book travel arrangements",
+    backstory="Expert travel agent",
+    tools=[book_flight, cancel_flight],
+)
+
+# Create task
+task = Task(
+    description="Book a flight to NYC for tomorrow",
+    agent=travel_agent,
+    expected_output="Booking confirmation",
+)
+
+# Create compensated crew
+crew = create_compensated_crew(
+    agents=[travel_agent],
+    tasks=[task],
+    compensation_mapping={"Book Flight": "Cancel Flight"},
+    goals=["minimize_cost"],
+)
+
+result = crew.kickoff()
+```
+
+### Basic Usage with AWS Strands
+
+```python
+from strands import tool
+from react_agent_compensation.strands_adaptor import create_compensated_agent
+
+# Define your tools
+@tool
+def reserve_inventory(product_ids: list, quantity: int = 1) -> str:
+    """Reserve inventory for products."""
+    return '{"reservation_id": "RES-123", "status": "reserved"}'
+
+@tool
+def release_inventory(reservation_id: str) -> str:
+    """Release reserved inventory."""
+    return '{"released": true}'
+
+# Create compensated agent
+agent = create_compensated_agent(
+    system_prompt="You are an order processing assistant.",
+    tools=[reserve_inventory, release_inventory],
+    compensation_mapping={"reserve_inventory": "release_inventory"},
+    goals=["fast_processing"],
+)
+
+# Run the agent (sync)
+result = agent("Reserve inventory for products SKU001, SKU002")
+
+# Or async
+result = await agent.invoke_async("Reserve inventory for products SKU001, SKU002")
 ```
 
 ### MCP Integration
@@ -269,7 +353,9 @@ manager = RecoveryManager(
 
 See the [examples](./examples) directory for complete working examples:
 
-- **[LangChain Agent](./examples/langchain_agent.py)**: Basic LangChain integration with LangSmith tracing
+- **[E-commerce Order](./examples/ecommerce_order.py)**: Multi-step order processing with LangChain
+- **[CrewAI Travel Booking](./examples/crewai_travel_booking.py)**: Travel booking with CrewAI multi-agent
+- **[Strands Order Processing](./examples/strands_order_processing.py)**: Order processing with AWS Strands
 - **[MCP Integration](./examples/mcp/)**: Full MCP server/client example with MongoDB backend
 
 ## Documentation
@@ -328,6 +414,26 @@ See the [examples](./examples) directory for complete working examples:
 | `CompensationMiddleware` | Wraps tools with compensation tracking |
 | `create_compensated_agent` | Factory for creating compensated agents |
 | `create_multi_agent_log` | Shared log for multi-agent scenarios |
+
+### CrewAI Adaptor
+
+| Class/Function | Description |
+|----------------|-------------|
+| `create_compensated_crew` | Factory for creating compensated CrewAI crews |
+| `create_compensated_agent` | Factory for creating compensated CrewAI agents |
+| `wrap_tool_with_compensation` | Wrap individual tools with compensation tracking |
+| `CrewAICompensationMiddleware` | Middleware for recovery/compensation |
+| `CrewAIHookManager` | Hook-based integration manager |
+
+### Strands Adaptor
+
+| Class/Function | Description |
+|----------------|-------------|
+| `create_compensated_agent` | Factory for creating compensated Strands agents |
+| `CompensationHookProvider` | HookProvider implementing Strands' hook protocol |
+| `wrap_tools_with_compensation` | Manual integration helper |
+| `StrandsStateSync` | State synchronization with invocation_state |
+| `CompensationApprovalInterrupt` | Optional human-in-the-loop approval |
 
 ### MCP Integration
 
