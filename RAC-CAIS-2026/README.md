@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/banner.png" alt="RAC Banner" width="100%">
+  <img src="assets/banner.png" alt="RAC Banner" width="30%">
   
   # Robust Agent Compensation (RAC)
   ### Teaching AI Agents to Compensate
