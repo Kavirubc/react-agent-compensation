@@ -1,0 +1,878 @@
+{
+  "task_id": "P6",
+  "framework": "langgraph",
+  "start_time": 1768189218.3728309,
+  "end_time": 1768189229.374847,
+  "duration": 11.002016067504883,
+  "events": [
+    {
+      "event_type": "token_usage",
+      "timestamp": 1768189221.108425,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1153,
+        "output_tokens": 217,
+        "total_tokens": 1370,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1768189221.999477,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1187,
+        "output_tokens": 16,
+        "total_tokens": 1203,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1768189223.40078,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1229,
+        "output_tokens": 13,
+        "total_tokens": 1242,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1768189224.2776902,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1263,
+        "output_tokens": 21,
+        "total_tokens": 1284,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1768189225.2413929,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1312,
+        "output_tokens": 18,
+        "total_tokens": 1330,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1768189226.316767,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1358,
+        "output_tokens": 20,
+        "total_tokens": 1378,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1768189227.302786,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1408,
+        "output_tokens": 24,
+        "total_tokens": 1432,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1768189228.4893272,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1466,
+        "output_tokens": 33,
+        "total_tokens": 1499,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1768189229.3708491,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1504,
+        "output_tokens": 20,
+        "total_tokens": 1524,
+        "model": null
+      }
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1768189229.3735318,
+      "tool_name": null,
+      "args": null,
+      "result": "\nExecute the following planning task:\n\nTask: Thanksgiving Dinner Planning\nDescription: Planning and scheduling to synchronize travel and meal preparation among family members with airport pickups and kitchen dependencies\n\nGoals:\n- Coordinate all family travel\n- Complete meal preparation on time\n- Minimize kitchen and resource conflicts\n\nConstraints:\n- Dinner serving deadline\n- Kitchen workspace capacity\n- Cooking task dependencies\n- Airport pickup scheduling\n\nResources Available:\n{'vehicles': [{",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1768189229.3735418,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Okay, I will create a plan to coordinate the Thanksgiving dinner, considering travel, meal preparation, and resource constraints.\n\n**1. Resource Allocation & Task Assignment:**\n\n*   **Allocate Resources:** No specific resource allocation is needed at this stage. We will use the existing resources (vehicles and family members' skills).\n*   **Assign Tasks:**\n    *   Assign 'turkey' to 'mom'\n    *   Assign 'gravy' to 'mom'\n    *   Assign 'potatoes' to 'dad'\n\n**2. Travel Coordination:**\n\n*   **Assig",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "task_id": "turkey",
+          "assignee_id": "mom"
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1768189229.373548,
+      "tool_name": "assign_task",
+      "args": {
+        "task_id": "turkey",
+        "assignee_id": "mom"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1768189229.3735611,
+      "tool_name": null,
+      "args": null,
+      "result": "Okay, I will create a plan to coordinate the Thanksgiving dinner, considering travel, meal preparation, and resource constraints.\n\n**1. Resource Allocation & Task Assignment:**\n\n*   **Allocate Resources:** No specific resource allocation is needed at this stage. We will use the existing resources (vehicles and family members' skills).\n*   **Assign Tasks:**\n    *   Assign 'turkey' to 'mom'\n    *   Assign 'gravy' to 'mom'\n    *   Assign 'potatoes' to 'dad'\n\n**2. Travel Coordination:**\n\n*   **Assig",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1768189229.3735738,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": "SUCCESS: Task turkey assigned to mom. Assignment ID: task_turkey_mom",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1768189229.373578,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Agent decided to call assign_task",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "assignee_id": "mom",
+          "dependencies": [
+            "turkey"
+          ],
+          "task_id": "gravy"
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1768189229.3735812,
+      "tool_name": "assign_task",
+      "args": {
+        "assignee_id": "mom",
+        "dependencies": [
+          "turkey"
+        ],
+        "task_id": "gravy"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1768189229.373585,
+      "tool_name": null,
+      "args": null,
+      "result": "",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1768189229.373594,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": "SUCCESS: Task gravy assigned to mom (depends on: turkey). Assignment ID: task_gravy_mom",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1768189229.373597,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Agent decided to call assign_task",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "assignee_id": "dad",
+          "task_id": "potatoes"
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1768189229.373599,
+      "tool_name": "assign_task",
+      "args": {
+        "assignee_id": "dad",
+        "task_id": "potatoes"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1768189229.3736022,
+      "tool_name": null,
+      "args": null,
+      "result": "",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1768189229.37361,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": "SUCCESS: Task potatoes assigned to dad. Assignment ID: task_potatoes_dad",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1768189229.373613,
+      "tool_name": "assign_vehicle",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Agent decided to call assign_vehicle",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "vehicle_id": "car2",
+          "pickup_location": "airport",
+          "dropoff_location": "home",
+          "passenger_id": "dad"
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1768189229.373615,
+      "tool_name": "assign_vehicle",
+      "args": {
+        "vehicle_id": "car2",
+        "pickup_location": "airport",
+        "dropoff_location": "home",
+        "passenger_id": "dad"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1768189229.373618,
+      "tool_name": null,
+      "args": null,
+      "result": "",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1768189229.373625,
+      "tool_name": "assign_vehicle",
+      "args": null,
+      "result": "SUCCESS: Vehicle car2 assigned to passenger dad, from airport to home. Assignment ID: assign_car2_dad",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1768189229.373628,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Agent decided to call assign_task",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "dependencies": [
+            "gravy",
+            "turkey"
+          ],
+          "assignee_id": "mom",
+          "task_id": "stuffing"
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1768189229.37363,
+      "tool_name": "assign_task",
+      "args": {
+        "dependencies": [
+          "gravy",
+          "turkey"
+        ],
+        "assignee_id": "mom",
+        "task_id": "stuffing"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1768189229.373633,
+      "tool_name": null,
+      "args": null,
+      "result": "",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1768189229.3736398,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": "SUCCESS: Task stuffing assigned to mom (depends on: gravy, turkey). Assignment ID: task_stuffing_mom",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1768189229.373643,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Agent decided to call assign_task",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "assignee_id": "mom",
+          "task_id": "vegetables",
+          "dependencies": [
+            "stuffing",
+            "gravy",
+            "turkey"
+          ]
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1768189229.373645,
+      "tool_name": "assign_task",
+      "args": {
+        "assignee_id": "mom",
+        "task_id": "vegetables",
+        "dependencies": [
+          "stuffing",
+          "gravy",
+          "turkey"
+        ]
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1768189229.3736472,
+      "tool_name": null,
+      "args": null,
+      "result": "",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1768189229.373655,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": "SUCCESS: Task vegetables assigned to mom (depends on: stuffing, gravy, turkey). Assignment ID: task_vegetables_mom",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1768189229.3736582,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Agent decided to call assign_task",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "task_id": "dessert",
+          "assignee_id": "mom",
+          "dependencies": [
+            "stuffing",
+            "gravy",
+            "turkey",
+            "vegetables",
+            "potatoes"
+          ]
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1768189229.3736598,
+      "tool_name": "assign_task",
+      "args": {
+        "task_id": "dessert",
+        "assignee_id": "mom",
+        "dependencies": [
+          "stuffing",
+          "gravy",
+          "turkey",
+          "vegetables",
+          "potatoes"
+        ]
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1768189229.373662,
+      "tool_name": null,
+      "args": null,
+      "result": "",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1768189229.3736699,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": "SUCCESS: Task dessert assigned to mom (depends on: stuffing, gravy, turkey, vegetables, potatoes). Assignment ID: task_dessert_mom",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1768189229.373673,
+      "tool_name": "allocate_resource",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "All tasks assigned to family members and dependencies are set. Vehicle assigned to pick up dad from the airport.",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "destination": "home",
+          "quantity": 10,
+          "resource_type": "food"
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1768189229.373675,
+      "tool_name": "allocate_resource",
+      "args": {
+        "destination": "home",
+        "quantity": 10,
+        "resource_type": "food"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1768189229.3736792,
+      "tool_name": null,
+      "args": null,
+      "result": "All tasks assigned to family members and dependencies are set. Vehicle assigned to pick up dad from the airport.",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1768189229.373686,
+      "tool_name": "allocate_resource",
+      "args": null,
+      "result": "SUCCESS: Allocated 10 units of food to home. Allocation ID: alloc_food_home_10",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1768189229.3736908,
+      "tool_name": null,
+      "args": null,
+      "result": "All goals achieved: Family travel coordinated, meal preparation tasks assigned with dependencies, and resources allocated.",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    }
+  ],
+  "compensation_events": [],
+  "disruptions": [],
+  "summary": {
+    "llm_decision_count": 8,
+    "tool_call_count": 8,
+    "retry_count": 0,
+    "replan_count": 0,
+    "compensation_count": 0,
+    "total_events": 43,
+    "input_tokens": 11880,
+    "output_tokens": 382,
+    "total_tokens": 12262
+  },
+  "final_state": {
+    "scheduled_jobs": 0,
+    "assigned_vehicles": 1,
+    "action_history": [
+      {
+        "action": "assign_task",
+        "data": {
+          "assignment_id": "task_turkey_mom",
+          "task_id": "turkey",
+          "assignee_id": "mom",
+          "start_time": null,
+          "end_time": null,
+          "dependencies": [],
+          "status": "assigned"
+        },
+        "timestamp": 1768189221.1129768,
+        "type": "action"
+      },
+      {
+        "action": "assign_task",
+        "data": {
+          "assignment_id": "task_gravy_mom",
+          "task_id": "gravy",
+          "assignee_id": "mom",
+          "start_time": null,
+          "end_time": null,
+          "dependencies": [
+            "turkey"
+          ],
+          "status": "assigned"
+        },
+        "timestamp": 1768189222.0038028,
+        "type": "action"
+      },
+      {
+        "action": "assign_task",
+        "data": {
+          "assignment_id": "task_potatoes_dad",
+          "task_id": "potatoes",
+          "assignee_id": "dad",
+          "start_time": null,
+          "end_time": null,
+          "dependencies": [],
+          "status": "assigned"
+        },
+        "timestamp": 1768189223.406241,
+        "type": "action"
+      },
+      {
+        "action": "assign_vehicle",
+        "data": {
+          "assignment_id": "assign_car2_dad",
+          "vehicle_id": "car2",
+          "passenger_id": "dad",
+          "route_id": null,
+          "pickup_location": "airport",
+          "dropoff_location": "home",
+          "start_time": null,
+          "end_time": null,
+          "status": "assigned"
+        },
+        "timestamp": 1768189224.282648,
+        "type": "action"
+      },
+      {
+        "action": "assign_task",
+        "data": {
+          "assignment_id": "task_stuffing_mom",
+          "task_id": "stuffing",
+          "assignee_id": "mom",
+          "start_time": null,
+          "end_time": null,
+          "dependencies": [
+            "gravy",
+            "turkey"
+          ],
+          "status": "assigned"
+        },
+        "timestamp": 1768189225.245908,
+        "type": "action"
+      },
+      {
+        "action": "assign_task",
+        "data": {
+          "assignment_id": "task_vegetables_mom",
+          "task_id": "vegetables",
+          "assignee_id": "mom",
+          "start_time": null,
+          "end_time": null,
+          "dependencies": [
+            "stuffing",
+            "gravy",
+            "turkey"
+          ],
+          "status": "assigned"
+        },
+        "timestamp": 1768189226.322212,
+        "type": "action"
+      },
+      {
+        "action": "assign_task",
+        "data": {
+          "assignment_id": "task_dessert_mom",
+          "task_id": "dessert",
+          "assignee_id": "mom",
+          "start_time": null,
+          "end_time": null,
+          "dependencies": [
+            "stuffing",
+            "gravy",
+            "turkey",
+            "vegetables",
+            "potatoes"
+          ],
+          "status": "assigned"
+        },
+        "timestamp": 1768189227.305762,
+        "type": "action"
+      },
+      {
+        "action": "allocate_resource",
+        "data": {
+          "allocation_id": "alloc_food_home_10",
+          "resource_type": "food",
+          "quantity": 10,
+          "destination": "home",
+          "allocated_by": null,
+          "status": "allocated"
+        },
+        "timestamp": 1768189228.495924,
+        "type": "action"
+      }
+    ]
+  },
+  "success": true,
+  "error": null
+}

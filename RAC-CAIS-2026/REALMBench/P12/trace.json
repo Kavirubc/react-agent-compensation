@@ -1,0 +1,1117 @@
+{
+  "task_id": "P11_BASE",
+  "framework": "saga_llm",
+  "start_time": 1767677487.946273,
+  "end_time": 1767677570.942819,
+  "duration": 82.99654603004456,
+  "events": [
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767677487.9462929,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1055,
+        "output_tokens": 1396,
+        "total_tokens": 2451,
+        "model": "gemini-2.0-flash"
+      }
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1767677487.946303,
+      "tool_name": "generate_plan",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Phase 1 planning LLM call 1",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "phase1_planning"
+      }
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1767677487.946306,
+      "tool_name": "generate_plan",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Phase 1 planning LLM call 2",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "phase1_planning"
+      }
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1767677487.9463081,
+      "tool_name": "generate_plan",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Phase 1 planning LLM call 3",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "phase1_planning"
+      }
+    },
+    {
+      "event_type": "plan_generation",
+      "timestamp": 1767677487.94693,
+      "tool_name": null,
+      "args": null,
+      "result": [
+        "schedule_job",
+        "schedule_job",
+        "schedule_job",
+        "schedule_job",
+        "schedule_job"
+      ],
+      "success": null,
+      "reasoning": "Generated plan 'task' with 5 tasks",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "dependencies": [
+          [
+            "T1",
+            "T2"
+          ],
+          [
+            "T2",
+            "T3"
+          ],
+          [
+            "T3",
+            "T4"
+          ],
+          [
+            "T4",
+            "T5"
+          ]
+        ],
+        "constraints": [
+          "Jobs must follow precedence constraints",
+          "Each machine can process one job at a time",
+          "All jobs must complete by deadline"
+        ]
+      }
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1767677487.946934,
+      "tool_name": "generate_plan",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Phase 1: Generated workflow plan for '\nExecute the following planning task:\n\nTask: Job Shop Scheduling (JSSP) - Pure\nDescription: Canonica...'",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "plan_generation",
+        "task_count": 5
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767677530.350537,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 16674,
+        "output_tokens": 5633,
+        "total_tokens": 22307,
+        "model": "gemini-2.0-flash"
+      }
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1767677530.350566,
+      "tool_name": "generate_code",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Phase 2: Generated 5 agents and 5 compensations",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "code_generation",
+        "total_tokens": 22307
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767677530.392116,
+      "tool_name": "schedule_job",
+      "args": {
+        "job_id": "job_1",
+        "machine_id": "machine_1",
+        "start_time": 0,
+        "duration": 2,
+        "priority": 1
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767677530.394976,
+      "tool_name": "schedule_job",
+      "args": null,
+      "result": "Machine unavailable due to breakdown: {'type': <DisruptionType.MACHINE_BREAKDOWN: 'machine_breakdown'>, 'machine_id': 1, 'trigger_after': 1, 'persistent': True} [job_id=job_1]",
+      "success": false,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": "Machine unavailable due to breakdown: {'type': <DisruptionType.MACHINE_BREAKDOWN: 'machine_breakdown'>, 'machine_id': 1, 'trigger_after': 1, 'persistent': True} [job_id=job_1]",
+      "metadata": null
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767677530.3962162,
+      "tool_name": "schedule_job",
+      "args": {
+        "job_id": "job_2",
+        "machine_id": "machine_2",
+        "start_time": 0,
+        "duration": 2,
+        "priority": 1
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767677530.3969579,
+      "tool_name": "schedule_job",
+      "args": null,
+      "result": {
+        "status": "success",
+        "job_id": "job_2",
+        "machine_id": "machine_2",
+        "start_time": 0,
+        "end_time": 2
+      },
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767677530.3980532,
+      "tool_name": "schedule_job",
+      "args": {
+        "job_id": "job_3",
+        "machine_id": "machine_3",
+        "start_time": 0,
+        "duration": 2,
+        "priority": 1
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767677530.3988621,
+      "tool_name": "schedule_job",
+      "args": null,
+      "result": {
+        "status": "success",
+        "job_id": "job_3",
+        "machine_id": "machine_3",
+        "start_time": 0,
+        "end_time": 2
+      },
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.402245,
+      "tool_name": "T3_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T3"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.4022589,
+      "tool_name": "T2_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T2"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.4022698,
+      "tool_name": "T2_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T2"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.402278,
+      "tool_name": "T3_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T3"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.402285,
+      "tool_name": "T2_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T2"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.402291,
+      "tool_name": "T2_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T2"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.402297,
+      "tool_name": "T3_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T3"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.402303,
+      "tool_name": "T2_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T2"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.4023092,
+      "tool_name": "T2_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T2"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.402316,
+      "tool_name": "T3_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T3"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.4023218,
+      "tool_name": "T2_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T2"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.402328,
+      "tool_name": "T2_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T2"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.402335,
+      "tool_name": "T3_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T3"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.4023411,
+      "tool_name": "T2_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T2"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.402347,
+      "tool_name": "T2_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T2"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.4023528,
+      "tool_name": "T3_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T3"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.402359,
+      "tool_name": "T2_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T2"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.402366,
+      "tool_name": "T2_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T2"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.4023721,
+      "tool_name": "T3_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T3"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.402378,
+      "tool_name": "T2_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T2"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.4023838,
+      "tool_name": "T2_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T2"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.40239,
+      "tool_name": "T3_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T3"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.4023948,
+      "tool_name": "T2_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T2"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767677530.402401,
+      "tool_name": "T2_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T2"
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767677533.201681,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 712,
+        "output_tokens": 315,
+        "total_tokens": 1027,
+        "model": null
+      }
+    },
+    {
+      "event_type": "replan",
+      "timestamp": 1767677533.2022872,
+      "tool_name": null,
+      "args": null,
+      "result": "Context-preserving replan #2 with 5 tasks",
+      "success": true,
+      "reasoning": "Persistent context: {'failed_attempts': [{'action': 'unknown_action', 'params': {}, 'error': 'Unknown failure', 'timestamp': '2026-01-06T11:02:10.402928', 'attempt_number': 1, 'is_permanent': False}], 'permanent_failures': 0, 'completed_jobs': [], 'failure_count': 1, 'replan_count': 1}",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1767677533.202294,
+      "tool_name": "modify_plan",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Replan with persistent context: 1 failed attempts, 0 permanent",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "strategic_replan",
+        "new_task_count": 5,
+        "failed_attempts": 1,
+        "permanent_failures": 0,
+        "replan_number": 2
+      }
+    },
+    {
+      "event_type": "plan_generation",
+      "timestamp": 1767677533.202335,
+      "tool_name": null,
+      "args": null,
+      "result": [
+        "schedule_job",
+        "schedule_job",
+        "schedule_job",
+        "schedule_job",
+        "schedule_job"
+      ],
+      "success": null,
+      "reasoning": "Generated plan 'task_replan_2' with 5 tasks",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "dependencies": [],
+        "constraints": [
+          "Jobs must follow precedence constraints",
+          "Each machine can process one job at a time",
+          "All jobs must complete by deadline",
+          "Replan #2 with persistent context",
+          "Failed attempts: 1",
+          "Permanent failures: 0"
+        ]
+      }
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1767677533.202337,
+      "tool_name": "generate_plan",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Phase 1: Generated workflow plan for '\nExecute the following planning task:\n\nTask: Job Shop Scheduling (JSSP) - Pure\nDescription: Canonica...'",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "plan_generation",
+        "task_count": 5
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767677570.888149,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 32502,
+        "output_tokens": 10687,
+        "total_tokens": 43189,
+        "model": "gemini-2.0-flash"
+      }
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1767677570.8881679,
+      "tool_name": "generate_code",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Phase 2: Generated 5 agents and 5 compensations",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "code_generation",
+        "total_tokens": 43189
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767677570.932361,
+      "tool_name": "schedule_job",
+      "args": {
+        "job_id": "job_1",
+        "machine_id": "machine_1",
+        "start_time": 0,
+        "duration": 2,
+        "priority": 1
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767677570.9349198,
+      "tool_name": "schedule_job",
+      "args": {
+        "job_id": "job_2",
+        "machine_id": "machine_2",
+        "start_time": 0,
+        "duration": 2,
+        "priority": 1
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767677570.93568,
+      "tool_name": "schedule_job",
+      "args": {
+        "job_id": "job_3",
+        "machine_id": "machine_3",
+        "start_time": 0,
+        "duration": 2,
+        "priority": 1
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767677570.9364119,
+      "tool_name": "schedule_job",
+      "args": {
+        "job_id": "job_4",
+        "machine_id": "machine_1",
+        "start_time": 10,
+        "duration": 3,
+        "priority": 1
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767677570.938188,
+      "tool_name": "schedule_job",
+      "args": null,
+      "result": "Machine unavailable due to breakdown: {'type': <DisruptionType.MACHINE_BREAKDOWN: 'machine_breakdown'>, 'machine_id': 1, 'trigger_after': 1, 'persistent': True} [job_id=job_1]",
+      "success": false,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": "Machine unavailable due to breakdown: {'type': <DisruptionType.MACHINE_BREAKDOWN: 'machine_breakdown'>, 'machine_id': 1, 'trigger_after': 1, 'persistent': True} [job_id=job_1]",
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767677570.9385002,
+      "tool_name": "schedule_job",
+      "args": null,
+      "result": "Machine unavailable due to breakdown: {'type': <DisruptionType.MACHINE_BREAKDOWN: 'machine_breakdown'>, 'machine_id': 2, 'trigger_after': 3, 'persistent': True} [job_id=job_2]",
+      "success": false,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": "Machine unavailable due to breakdown: {'type': <DisruptionType.MACHINE_BREAKDOWN: 'machine_breakdown'>, 'machine_id': 2, 'trigger_after': 3, 'persistent': True} [job_id=job_2]",
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767677570.939114,
+      "tool_name": "schedule_job",
+      "args": null,
+      "result": "Machine unavailable due to breakdown: {'type': <DisruptionType.MACHINE_BREAKDOWN: 'machine_breakdown'>, 'machine_id': 1, 'trigger_after': 1, 'persistent': True} [job_id=job_4]",
+      "success": false,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": "Machine unavailable due to breakdown: {'type': <DisruptionType.MACHINE_BREAKDOWN: 'machine_breakdown'>, 'machine_id': 1, 'trigger_after': 1, 'persistent': True} [job_id=job_4]",
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767677570.940284,
+      "tool_name": "schedule_job",
+      "args": null,
+      "result": "Machine unavailable due to breakdown: {'type': <DisruptionType.MACHINE_BREAKDOWN: 'machine_breakdown'>, 'machine_id': 3, 'trigger_after': 5, 'persistent': True} [job_id=job_3]",
+      "success": false,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": "Machine unavailable due to breakdown: {'type': <DisruptionType.MACHINE_BREAKDOWN: 'machine_breakdown'>, 'machine_id': 3, 'trigger_after': 5, 'persistent': True} [job_id=job_3]",
+      "metadata": null
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767677570.940337,
+      "tool_name": "schedule_job",
+      "args": {
+        "job_id": "job_5",
+        "machine_id": "machine_3",
+        "start_time": 0,
+        "duration": 1,
+        "priority": 1
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767677570.94206,
+      "tool_name": "schedule_job",
+      "args": null,
+      "result": "Machine unavailable due to breakdown: {'type': <DisruptionType.MACHINE_BREAKDOWN: 'machine_breakdown'>, 'machine_id': 3, 'trigger_after': 5, 'persistent': True} [job_id=job_5]",
+      "success": false,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": "Machine unavailable due to breakdown: {'type': <DisruptionType.MACHINE_BREAKDOWN: 'machine_breakdown'>, 'machine_id': 3, 'trigger_after': 5, 'persistent': True} [job_id=job_5]",
+      "metadata": null
+    }
+  ],
+  "compensation_events": [
+    {
+      "original_action": "T3",
+      "compensation_action": "T3_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.402245
+    },
+    {
+      "original_action": "T2",
+      "compensation_action": "T2_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.4022589
+    },
+    {
+      "original_action": "T2",
+      "compensation_action": "T2_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.4022698
+    },
+    {
+      "original_action": "T3",
+      "compensation_action": "T3_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.402278
+    },
+    {
+      "original_action": "T2",
+      "compensation_action": "T2_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.402285
+    },
+    {
+      "original_action": "T2",
+      "compensation_action": "T2_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.402291
+    },
+    {
+      "original_action": "T3",
+      "compensation_action": "T3_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.402297
+    },
+    {
+      "original_action": "T2",
+      "compensation_action": "T2_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.402303
+    },
+    {
+      "original_action": "T2",
+      "compensation_action": "T2_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.4023092
+    },
+    {
+      "original_action": "T3",
+      "compensation_action": "T3_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.402316
+    },
+    {
+      "original_action": "T2",
+      "compensation_action": "T2_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.4023218
+    },
+    {
+      "original_action": "T2",
+      "compensation_action": "T2_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.402328
+    },
+    {
+      "original_action": "T3",
+      "compensation_action": "T3_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.402335
+    },
+    {
+      "original_action": "T2",
+      "compensation_action": "T2_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.4023411
+    },
+    {
+      "original_action": "T2",
+      "compensation_action": "T2_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.402347
+    },
+    {
+      "original_action": "T3",
+      "compensation_action": "T3_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.4023528
+    },
+    {
+      "original_action": "T2",
+      "compensation_action": "T2_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.402359
+    },
+    {
+      "original_action": "T2",
+      "compensation_action": "T2_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.402366
+    },
+    {
+      "original_action": "T3",
+      "compensation_action": "T3_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.4023721
+    },
+    {
+      "original_action": "T2",
+      "compensation_action": "T2_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.402378
+    },
+    {
+      "original_action": "T2",
+      "compensation_action": "T2_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.4023838
+    },
+    {
+      "original_action": "T3",
+      "compensation_action": "T3_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.40239
+    },
+    {
+      "original_action": "T2",
+      "compensation_action": "T2_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.4023948
+    },
+    {
+      "original_action": "T2",
+      "compensation_action": "T2_compensation",
+      "reason": "Task T1 failed: status=failed | Precondition not met: job_1 is not scheduled on machine_1 | Task T5 failed: status=failed",
+      "success": true,
+      "timestamp": 1767677530.402401
+    }
+  ],
+  "disruptions": [],
+  "summary": {
+    "llm_decision_count": 8,
+    "tool_call_count": 8,
+    "retry_count": 0,
+    "replan_count": 1,
+    "compensation_count": 24,
+    "total_events": 55,
+    "input_tokens": 50943,
+    "output_tokens": 18031,
+    "total_tokens": 68974
+  },
+  "final_state": {
+    "completed_tasks": [],
+    "failed_tasks": [
+      "T1",
+      "T2",
+      "T3",
+      "T4",
+      "T5"
+    ],
+    "saga_status": "failed"
+  },
+  "success": false,
+  "error": null
+}

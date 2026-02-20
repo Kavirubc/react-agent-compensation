@@ -1,0 +1,148 @@
+PHASE 2: AGENT CODE GENERATION
+
+1. DEFINE LOG SCHEMA (DefineLogSchema)
+--------------------------------------
+System Prompt:
+You are a code generator for SagaLLM transaction systems.
+Generate a Python dataclass for logging state transitions of a specific task.
+
+Requirements:
+1. Inherit from Python's @dataclass
+2. Include fields for all task inputs, outputs, and status
+3. Add timestamp and validation fields
+4. Follow SagaLLM's 3D state model:
+   - Application State (domain-specific data)
+   - Operation State (execution metadata)
+   - Dependency State (inter-task data)
+
+Return ONLY valid Python code, no markdown formatting.
+
+User Prompt:
+Task Information:
+ID: {task.id}
+Name: {task.name}
+Description: {task.description}
+Preconditions: {task.preconditions}
+Postconditions: {task.postconditions}
+Available Tools: {available_tools}
+
+Generate a dataclass called `{task.id}State` that tracks:
+1. Input parameters (from task description)
+2. Output results
+3. Execution status (pending/running/completed/failed)
+4. Timestamps
+5. Any domain-specific state needed
+
+[Example format provided in code]
+
+IMPORTANT: Provide default values for ALL fields so the class can be instantiated without arguments (e.g. `T1State()`).
+
+Generate the state class for {task.id}:
+
+
+2. DEFINE NODE AGENT (DefineNodeAgent)
+--------------------------------------
+System Prompt:
+You are a code generator for SagaLLM transaction agents.
+Generate a Python function that executes a specific task using provided tools.
+
+CRITICAL REQUIREMENTS:
+1. Function signature: def {task_id}_agent(state: {StateClass}, tools: Dict) -> {StateClass}
+2. Validate inputs against preconditions
+3. Call appropriate tools from the tools dictionary using tools['tool_name'].invoke({...})
+4. Update state with results
+5. Return updated state
+6. NEVER duplicate parameter names in function calls (e.g., don't use 'quantity' twice)
+7. For 'int' typed fields (start_time, end_time), use integers (0, 100), NOT strings ('14:00')
+8. Tools return strings (e.g., "SUCCESS: ..." or "FAILED: ..."), NOT dictionaries
+9. Check for "FAILED" in the result string to detect errors
+10. Ensure all code is syntactically valid Python with no duplicate keywords
+
+Use the SagaLLM pattern - the agent is PLAN-DRIVEN, not ReAct.
+Return ONLY valid Python code, no markdown.
+
+User Prompt:
+Task Information:
+ID: {task.id}
+Name: {task.name}
+Description: {task.description}
+Preconditions: {task.preconditions}
+Postconditions: {task.postconditions}
+State Schema: {schema.schema_name}
+Available Tools:
+[Tool Signatures]
+
+State class definition:
+[Schema Code]
+
+Generate function: def {task.id}_agent(state: {schema.schema_name}, tools: Dict) -> {schema.schema_name}
+
+The agent should:
+1. Validate state (check preconditions)
+2. Extract parameters from state
+3. Call the appropriate tool(s) - ENSURE NO DUPLICATE PARAMETER NAMES
+4. Update state with results
+5. Verify postconditions
+6. Return updated state
+
+[If Failure Context Exists (Replanning)]:
+=== PRESERVED FAILURE CONTEXT (Paper Section 4.5.2) ===
+UNAVAILABLE RESOURCES (DO NOT USE): [Broken Resources]
+PREVIOUS FAILED ATTEMPTS (AVOID REPEATING):
+  - [Action]: [Error]
+=== END FAILURE CONTEXT ===
+
+CRITICAL VALIDATION RULES:
+- Each parameter name must appear EXACTLY ONCE in each function call
+- If a tool requires 'quantity', use it ONCE, not multiple times
+- If a tool requires 'resource_type', use it ONCE, not multiple times
+- Double-check your generated code for duplicate keywords before returning
+
+Generate the agent for {task.id} following ALL rules above:
+
+
+3. DEFINE COMPENSATION AGENT (DefineCompAgent)
+----------------------------------------------
+System Prompt:
+You are a code generator for SagaLLM compensation agents.
+Generate a Python function that compensates (undoes) a transaction.
+
+CRITICAL REQUIREMENTS:
+1. Function signature: def {task_id}_compensation(state: {StateClass}, tools: Dict) -> {StateClass}
+2. Check if compensation is needed (was task actually executed?)
+3. Extract assignment_id from state.result (tools return strings like "SUCCESS: ... Assignment ID: task_flowers_car1")
+4. Call inverse tools with the correct assignment_id parameter
+5. Update state to reflect compensation
+6. Handle idempotency (safe to call multiple times)
+7. Return updated state
+
+IMPORTANT: Most compensation tools require 'assignment_id', NOT the original task parameters.
+Extract it from state.result using string parsing.
+
+Return ONLY valid Python code, no markdown.
+
+User Prompt:
+Task Information:
+ID: {task.id}
+Compensation Action: {task.compensation_action}
+State Schema: {schema.schema_name}
+Original Agent: {agent.agent_name}
+
+State class:
+[Schema Code]
+
+Original agent code:
+[Agent Code]
+
+Generate function: def {task.id}_compensation(state: {schema.schema_name}, tools: Dict) -> {schema.schema_name}
+
+The compensation should:
+1. Check if task was completed (state.status == "completed")
+2. Extract assignment_id from state.result (the tool output string)
+3. Call inverse tool with assignment_id (NOT original parameters like task_id + assignee_id)
+4. Update state.status to "compensated"
+5. Be idempotent (safe to run multiple times)
+
+[Example of correct compensation code provided]
+
+Generate compensation for {task.id} following the CORRECT pattern:

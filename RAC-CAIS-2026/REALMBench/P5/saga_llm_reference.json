@@ -1,0 +1,307 @@
+{
+  "task_id": "P5",
+  "framework": "saga_llm",
+  "start_time": 1768185982.373757,
+  "end_time": 1768186069.216079,
+  "duration": 86.84232211112976,
+  "events": [
+    {
+      "event_type": "token_usage",
+      "timestamp": 1768185982.373775,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1401,
+        "output_tokens": 3829,
+        "total_tokens": 5230,
+        "model": "gemini-2.0-flash"
+      }
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1768185982.37378,
+      "tool_name": "generate_plan",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Phase 1 planning LLM call 1",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "phase1_planning"
+      }
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1768185982.373783,
+      "tool_name": "generate_plan",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Phase 1 planning LLM call 2",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "phase1_planning"
+      }
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1768185982.373785,
+      "tool_name": "generate_plan",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Phase 1 planning LLM call 3",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "phase1_planning"
+      }
+    },
+    {
+      "event_type": "plan_generation",
+      "timestamp": 1768185982.374391,
+      "tool_name": null,
+      "args": null,
+      "result": [
+        "assign_task",
+        "assign_task",
+        "assign_task",
+        "assign_task",
+        "assign_vehicle",
+        "assign_vehicle",
+        "assign_task",
+        "assign_task",
+        "assign_task",
+        "assign_task",
+        "assign_task"
+      ],
+      "success": null,
+      "reasoning": "Generated plan 'task' with 11 tasks",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "dependencies": [
+          [
+            "T1",
+            "T2"
+          ],
+          [
+            "T1",
+            "T3"
+          ],
+          [
+            "T1",
+            "T4"
+          ],
+          [
+            "T2",
+            "T1"
+          ],
+          [
+            "T2",
+            "T3"
+          ],
+          [
+            "T2",
+            "T4"
+          ],
+          [
+            "T3",
+            "T1"
+          ],
+          [
+            "T3",
+            "T2"
+          ],
+          [
+            "T3",
+            "T4"
+          ],
+          [
+            "T4",
+            "T1"
+          ],
+          [
+            "T4",
+            "T2"
+          ],
+          [
+            "T4",
+            "T3"
+          ],
+          [
+            "T5",
+            "T6"
+          ],
+          [
+            "T6",
+            "T5"
+          ],
+          [
+            "T7",
+            "T8"
+          ],
+          [
+            "T7",
+            "T9"
+          ],
+          [
+            "T7",
+            "T10"
+          ],
+          [
+            "T7",
+            "T11"
+          ],
+          [
+            "T8",
+            "T7"
+          ],
+          [
+            "T8",
+            "T9"
+          ],
+          [
+            "T8",
+            "T10"
+          ],
+          [
+            "T8",
+            "T11"
+          ],
+          [
+            "T9",
+            "T7"
+          ],
+          [
+            "T9",
+            "T8"
+          ],
+          [
+            "T9",
+            "T10"
+          ],
+          [
+            "T9",
+            "T11"
+          ],
+          [
+            "T10",
+            "T7"
+          ],
+          [
+            "T10",
+            "T8"
+          ],
+          [
+            "T10",
+            "T9"
+          ],
+          [
+            "T10",
+            "T11"
+          ],
+          [
+            "T11",
+            "T7"
+          ],
+          [
+            "T11",
+            "T8"
+          ],
+          [
+            "T11",
+            "T9"
+          ],
+          [
+            "T11",
+            "T10"
+          ]
+        ],
+        "constraints": [
+          "Wedding ceremony deadline",
+          "Vehicle passenger capacity",
+          "Errand completion dependencies"
+        ]
+      }
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1768185982.3743942,
+      "tool_name": "generate_plan",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Phase 1: Generated workflow plan for '\nExecute the following planning task:\n\nTask: Wedding Logistics\nDescription: Planning and scheduling ...'",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "plan_generation",
+        "task_count": 11
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1768186069.1717288,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 40975,
+        "output_tokens": 11538,
+        "total_tokens": 52513,
+        "model": "gemini-2.0-flash"
+      }
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1768186069.171746,
+      "tool_name": "generate_code",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Phase 2: Generated 11 agents and 11 compensations",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "code_generation",
+        "total_tokens": 52513
+      }
+    }
+  ],
+  "compensation_events": [],
+  "disruptions": [],
+  "summary": {
+    "llm_decision_count": 5,
+    "tool_call_count": 0,
+    "retry_count": 0,
+    "replan_count": 0,
+    "compensation_count": 0,
+    "total_events": 8,
+    "input_tokens": 42376,
+    "output_tokens": 15367,
+    "total_tokens": 57743
+  },
+  "final_state": null,
+  "success": false,
+  "error": "Graph must have an entrypoint: add at least one edge from START to another node"
+}

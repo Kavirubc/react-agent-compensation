@@ -1,0 +1,573 @@
+{
+  "task_id": "P8",
+  "framework": "langgraph_pe_std_tools",
+  "start_time": 1771423389.2590709,
+  "end_time": 1771423399.85669,
+  "duration": 10.59761905670166,
+  "events": [
+    {
+      "event_type": "token_usage",
+      "timestamp": 1771423392.664191,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 2014,
+        "output_tokens": 310,
+        "total_tokens": 2324,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1771423393.8165681,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 2071,
+        "output_tokens": 21,
+        "total_tokens": 2092,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1771423395.029045,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 2126,
+        "output_tokens": 23,
+        "total_tokens": 2149,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1771423396.272125,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 2188,
+        "output_tokens": 22,
+        "total_tokens": 2210,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1771423397.567123,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 2245,
+        "output_tokens": 23,
+        "total_tokens": 2268,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1771423399.8532171,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 2304,
+        "output_tokens": 192,
+        "total_tokens": 2496,
+        "model": null
+      }
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771423399.856349,
+      "tool_name": null,
+      "args": null,
+      "result": "Execute the following planning task:\nTask: Wedding Logistics with Disruptions\nDescription: Planning and scheduling with road closures and timing conflicts requiring reactive replanning\nGoals:\n- Coordinate all guest arrivals\n- Complete all required errands\n- Successfully adapt to disruptions\nConstraints:\n- Wedding ceremony deadline\n- Vehicle passenger capacity\n- Route availability constraints\nResources Available:\n{'vehicles': [{'id': 'van', 'capacity': 8, 'location': 'hotel'}, {'id': 'car1', 'cap",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1771423399.856363,
+      "tool_name": "assign_vehicle",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Okay, I understand the task. Here's the plan to coordinate the wedding logistics, handle disruptions, and achieve the goals:\n\n**1. Initial Assessment:**\n\n*   Guests: Family1 arriving at the airport at 14:00. Need transportation to the hotel.\n*   Errands: flowers, cake, decorations, photographer. Need to assign and schedule these.\n*   Vehicles: van (capacity 8, at hotel), car1 (capacity 4, at church).\n*   Wedding ceremony deadline: Not explicitly given, but assume a reasonable time (e.g., 17:00).",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "end_time": 1500,
+          "start_time": 1400,
+          "passenger_id": "family1",
+          "vehicle_id": "van",
+          "pickup_location": "airport",
+          "dropoff_location": "hotel"
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1771423399.8563688,
+      "tool_name": "assign_vehicle",
+      "args": {
+        "end_time": 1500,
+        "start_time": 1400,
+        "passenger_id": "family1",
+        "vehicle_id": "van",
+        "pickup_location": "airport",
+        "dropoff_location": "hotel"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771423399.8563871,
+      "tool_name": null,
+      "args": null,
+      "result": "Okay, I understand the task. Here's the plan to coordinate the wedding logistics, handle disruptions, and achieve the goals:\n\n**1. Initial Assessment:**\n\n*   Guests: Family1 arriving at the airport at 14:00. Need transportation to the hotel.\n*   Errands: flowers, cake, decorations, photographer. Need to assign and schedule these.\n*   Vehicles: van (capacity 8, at hotel), car1 (capacity 4, at church).\n*   Wedding ceremony deadline: Not explicitly given, but assume a reasonable time (e.g., 17:00).",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771423399.856401,
+      "tool_name": "assign_vehicle",
+      "args": null,
+      "result": "SUCCESS: Vehicle van assigned to passenger family1, from airport to hotel. Assignment ID: assign_van_family1",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1771423399.856407,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Agent decided to call assign_task",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "end_time": 1200,
+          "assignee_id": "driver1",
+          "start_time": 1100,
+          "task_id": "flowers"
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1771423399.85641,
+      "tool_name": "assign_task",
+      "args": {
+        "end_time": 1200,
+        "assignee_id": "driver1",
+        "start_time": 1100,
+        "task_id": "flowers"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771423399.8564138,
+      "tool_name": null,
+      "args": null,
+      "result": "",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771423399.8564239,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": "SUCCESS: Task flowers assigned to driver1 from 1100 to 1200. Assignment ID: task_flowers_driver1",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1771423399.8564281,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Agent decided to call assign_task",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "end_time": 1300,
+          "dependencies": [
+            "flowers"
+          ],
+          "start_time": 1200,
+          "assignee_id": "driver1",
+          "task_id": "cake"
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1771423399.856431,
+      "tool_name": "assign_task",
+      "args": {
+        "end_time": 1300,
+        "dependencies": [
+          "flowers"
+        ],
+        "start_time": 1200,
+        "assignee_id": "driver1",
+        "task_id": "cake"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771423399.8564339,
+      "tool_name": null,
+      "args": null,
+      "result": "",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771423399.8564422,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": "SUCCESS: Task cake assigned to driver1 from 1200 to 1300 (depends on: flowers). Assignment ID: task_cake_driver1",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1771423399.8564448,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Agent decided to call assign_task",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "assignee_id": "driver2",
+          "start_time": 1300,
+          "end_time": 1400,
+          "task_id": "decorations"
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1771423399.856447,
+      "tool_name": "assign_task",
+      "args": {
+        "assignee_id": "driver2",
+        "start_time": 1300,
+        "end_time": 1400,
+        "task_id": "decorations"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771423399.85645,
+      "tool_name": null,
+      "args": null,
+      "result": "",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771423399.856457,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": "SUCCESS: Task decorations assigned to driver2 from 1300 to 1400. Assignment ID: task_decorations_driver2",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1771423399.85646,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Agent decided to call assign_task",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "assignee_id": "photographer1",
+          "start_time": 1400,
+          "end_time": 1600,
+          "task_id": "photographer"
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1771423399.856462,
+      "tool_name": "assign_task",
+      "args": {
+        "assignee_id": "photographer1",
+        "start_time": 1400,
+        "end_time": 1600,
+        "task_id": "photographer"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771423399.8564649,
+      "tool_name": null,
+      "args": null,
+      "result": "",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771423399.856472,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": "SUCCESS: Task photographer assigned to photographer1 from 1400 to 1600. Assignment ID: task_photographer_photographer1",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771423399.856481,
+      "tool_name": null,
+      "args": null,
+      "result": "All tasks and vehicle assignments completed successfully.\n```\nFinal Report:\nAll goals achieved.\n- Coordinated guest arrival: Vehicle 'van' assigned to pick up family1 from airport at 14:00 and drop them off at the hotel by 15:00.\n- Completed errands:\n    - 'flowers' assigned to driver1, from 11:00 to 12:00.\n    - 'cake' assigned to driver1, from 12:00 to 13:00, dependent on 'flowers'.\n    - 'decorations' assigned to driver2, from 13:00 to 14:00.\n    - 'photographer' assigned to photographer1, fr",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    }
+  ],
+  "compensation_events": [],
+  "disruptions": [],
+  "summary": {
+    "llm_decision_count": 5,
+    "tool_call_count": 5,
+    "retry_count": 0,
+    "replan_count": 0,
+    "compensation_count": 0,
+    "total_events": 28,
+    "input_tokens": 12948,
+    "output_tokens": 591,
+    "total_tokens": 13539
+  },
+  "final_state": {
+    "scheduled_jobs": 0,
+    "assigned_vehicles": 1,
+    "action_history": [
+      {
+        "action": "assign_vehicle",
+        "data": {
+          "assignment_id": "assign_van_family1",
+          "vehicle_id": "van",
+          "passenger_id": "family1",
+          "route_id": null,
+          "pickup_location": "airport",
+          "dropoff_location": "hotel",
+          "start_time": 1400,
+          "end_time": 1500,
+          "status": "assigned"
+        },
+        "timestamp": 1771423392.666637,
+        "type": "action"
+      },
+      {
+        "action": "assign_task",
+        "data": {
+          "assignment_id": "task_flowers_driver1",
+          "task_id": "flowers",
+          "assignee_id": "driver1",
+          "start_time": 1100,
+          "end_time": 1200,
+          "dependencies": [],
+          "status": "assigned"
+        },
+        "timestamp": 1771423393.821067,
+        "type": "action"
+      },
+      {
+        "action": "assign_task",
+        "data": {
+          "assignment_id": "task_cake_driver1",
+          "task_id": "cake",
+          "assignee_id": "driver1",
+          "start_time": 1200,
+          "end_time": 1300,
+          "dependencies": [
+            "flowers"
+          ],
+          "status": "assigned"
+        },
+        "timestamp": 1771423395.033099,
+        "type": "action"
+      },
+      {
+        "action": "assign_task",
+        "data": {
+          "assignment_id": "task_decorations_driver2",
+          "task_id": "decorations",
+          "assignee_id": "driver2",
+          "start_time": 1300,
+          "end_time": 1400,
+          "dependencies": [],
+          "status": "assigned"
+        },
+        "timestamp": 1771423396.2759712,
+        "type": "action"
+      },
+      {
+        "action": "assign_task",
+        "data": {
+          "assignment_id": "task_photographer_photographer1",
+          "task_id": "photographer",
+          "assignee_id": "photographer1",
+          "start_time": 1400,
+          "end_time": 1600,
+          "dependencies": [],
+          "status": "assigned"
+        },
+        "timestamp": 1771423397.571029,
+        "type": "action"
+      }
+    ]
+  },
+  "success": true,
+  "error": null
+}

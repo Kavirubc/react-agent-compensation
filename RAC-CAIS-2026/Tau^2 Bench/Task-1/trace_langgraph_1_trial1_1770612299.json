@@ -1,0 +1,92 @@
+{
+  "steps": [
+    {
+      "type": "llm",
+      "tokens": {
+        "input": 4586,
+        "output": 334,
+        "total": 4920
+      }
+    },
+    {
+      "type": "llm",
+      "tokens": {
+        "input": 5083,
+        "output": 86,
+        "total": 5169
+      }
+    },
+    {
+      "type": "llm",
+      "tokens": {
+        "input": 5504,
+        "output": 63,
+        "total": 5567
+      }
+    },
+    {
+      "type": "llm",
+      "tokens": {
+        "input": 5822,
+        "output": 64,
+        "total": 5886
+      }
+    },
+    {
+      "type": "llm",
+      "tokens": {
+        "input": 6158,
+        "output": 65,
+        "total": 6223
+      }
+    },
+    {
+      "type": "llm",
+      "tokens": {
+        "input": 6495,
+        "output": 66,
+        "total": 6561
+      }
+    },
+    {
+      "type": "llm",
+      "tokens": {
+        "input": 6848,
+        "output": 417,
+        "total": 7265
+      }
+    },
+    {
+      "type": "llm",
+      "tokens": {
+        "input": 6901,
+        "output": 101,
+        "total": 7002
+      }
+    },
+    {
+      "type": "llm",
+      "tokens": {
+        "input": 6954,
+        "output": 101,
+        "total": 7055
+      }
+    },
+    {
+      "type": "llm",
+      "tokens": {
+        "input": 7007,
+        "output": 431,
+        "total": 7438
+      }
+    },
+    {
+      "type": "llm",
+      "tokens": {
+        "input": 7132,
+        "output": 15,
+        "total": 7147
+      }
+    }
+  ]
+}

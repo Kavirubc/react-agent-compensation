@@ -1,0 +1,2320 @@
+{
+  "task_id": "P9",
+  "framework": "saga_llm",
+  "start_time": 1767596004.986222,
+  "end_time": 1767596123.614305,
+  "duration": 118.62808299064636,
+  "events": [
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767596004.9862359,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1256,
+        "output_tokens": 1821,
+        "total_tokens": 3077,
+        "model": "gemini-2.0-flash"
+      }
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1767596004.986242,
+      "tool_name": "generate_plan",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Phase 1 planning LLM call 1",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "phase1_planning"
+      }
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1767596004.9862442,
+      "tool_name": "generate_plan",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Phase 1 planning LLM call 2",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "phase1_planning"
+      }
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1767596004.9862452,
+      "tool_name": "generate_plan",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Phase 1 planning LLM call 3",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "phase1_planning"
+      }
+    },
+    {
+      "event_type": "plan_generation",
+      "timestamp": 1767596004.98682,
+      "tool_name": null,
+      "args": null,
+      "result": [
+        "allocate_resource",
+        "assign_task",
+        "assign_task",
+        "assign_vehicle",
+        "assign_vehicle",
+        "allocate_resource",
+        "allocate_resource",
+        "allocate_resource"
+      ],
+      "success": null,
+      "reasoning": "Generated plan 'task' with 8 tasks",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "dependencies": [
+          [
+            "T1",
+            "T2"
+          ],
+          [
+            "T1",
+            "T3"
+          ],
+          [
+            "T6",
+            "T4"
+          ],
+          [
+            "T6",
+            "T5"
+          ],
+          [
+            "T7",
+            "T4"
+          ],
+          [
+            "T7",
+            "T5"
+          ],
+          [
+            "T8",
+            "T4"
+          ],
+          [
+            "T8",
+            "T5"
+          ]
+        ],
+        "constraints": [
+          "Dinner serving deadline",
+          "Kitchen workspace capacity",
+          "Flight arrival schedules"
+        ]
+      }
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1767596004.986825,
+      "tool_name": "generate_plan",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Phase 1: Generated workflow plan for '\nExecute the following planning task:\n\nTask: Thanksgiving Dinner with Disruptions\nDescription: Plann...'",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "plan_generation",
+        "task_count": 8
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767596062.854445,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 28902,
+        "output_tokens": 7997,
+        "total_tokens": 36899,
+        "model": "gemini-2.0-flash"
+      }
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1767596062.854469,
+      "tool_name": "generate_code",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Phase 2: Generated 8 agents and 8 compensations",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "code_generation",
+        "total_tokens": 36899
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767596062.890957,
+      "tool_name": "allocate_resource",
+      "args": {
+        "resource_type": "oven",
+        "quantity": 1,
+        "destination": "turkey_1",
+        "allocated_by": "system"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767596062.891625,
+      "tool_name": "allocate_resource",
+      "args": {
+        "resource_type": "sink",
+        "quantity": 1,
+        "destination": "potatoes",
+        "allocated_by": "agent"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767596062.8920162,
+      "tool_name": "allocate_resource",
+      "args": {
+        "resource_type": "stove",
+        "quantity": 1,
+        "destination": "stuffing",
+        "allocated_by": "agent"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767596062.8924658,
+      "tool_name": "allocate_resource",
+      "args": {
+        "resource_type": "counter_space",
+        "quantity": 1,
+        "destination": "",
+        "allocated_by": "system"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767596062.892927,
+      "tool_name": "allocate_resource",
+      "args": null,
+      "result": "SUCCESS: Allocated 1 units of oven to turkey_1. Allocation ID: alloc_oven_turkey_1_1",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767596062.8934798,
+      "tool_name": "allocate_resource",
+      "args": null,
+      "result": "FAILED: Resource delayed due to flight delay: {'type': <DisruptionType.FLIGHT_DELAY: 'flight_delay'>, 'flight': 'flight2', 'delay': 60, 'trigger_after': 3}",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767596062.893861,
+      "tool_name": "allocate_resource",
+      "args": null,
+      "result": "SUCCESS: Allocated 1 units of stove to stuffing. Allocation ID: alloc_stove_stuffing_1",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767596062.894183,
+      "tool_name": "allocate_resource",
+      "args": null,
+      "result": "FAILED: Resource delayed due to flight delay: {'type': <DisruptionType.FLIGHT_DELAY: 'flight_delay'>, 'flight': 'flight1', 'delay': 90, 'trigger_after': 2}",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767596062.896398,
+      "tool_name": "assign_vehicle",
+      "args": {
+        "vehicle_id": "car1",
+        "passenger_id": "dad",
+        "route_id": "flight2",
+        "pickup_location": null,
+        "dropoff_location": null,
+        "start_time": null,
+        "end_time": null
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767596062.8972192,
+      "tool_name": "assign_task",
+      "args": {
+        "task_id": "potatoes",
+        "assignee_id": "dad",
+        "start_time": null,
+        "end_time": null,
+        "dependencies": null
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767596062.8976681,
+      "tool_name": "assign_vehicle",
+      "args": {
+        "vehicle_id": "car2",
+        "passenger_id": "mom",
+        "route_id": "flight1",
+        "pickup_location": "airport",
+        "dropoff_location": "home",
+        "start_time": 0,
+        "end_time": 100
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767596062.8982341,
+      "tool_name": "assign_vehicle",
+      "args": null,
+      "result": "SUCCESS: Vehicle car1 assigned to passenger dad, route flight2. Assignment ID: assign_car1_dad",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767596062.898724,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": "SUCCESS: Task potatoes assigned to dad. Assignment ID: task_potatoes_dad",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767596062.8989198,
+      "tool_name": "assign_vehicle",
+      "args": null,
+      "result": "SUCCESS: Vehicle car2 assigned to passenger mom, route flight1, from airport to home. Assignment ID: assign_car2_mom",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901035,
+      "tool_name": "T4_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T4"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901429,
+      "tool_name": "T3_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T3"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.9018009,
+      "tool_name": "T5_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T5"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901809,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901818,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901834,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.9018428,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901862,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901877,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901896,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901907,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.9019141,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.90192,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901925,
+      "tool_name": "T4_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T4"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901929,
+      "tool_name": "T3_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T3"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.9019341,
+      "tool_name": "T5_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T5"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.9019399,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901945,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901949,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901954,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901959,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901964,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901969,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901974,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901979,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901984,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901988,
+      "tool_name": "T4_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T4"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.9019918,
+      "tool_name": "T3_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T3"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.901995,
+      "tool_name": "T5_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T5"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.9020002,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902005,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.9020102,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902015,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.90202,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902026,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.9020312,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902036,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.9020412,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902046,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.90205,
+      "tool_name": "T4_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T4"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.9020538,
+      "tool_name": "T3_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T3"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902058,
+      "tool_name": "T5_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T5"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.9020631,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902069,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902074,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902078,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.9020832,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902088,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.9020932,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902098,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902103,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902108,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902112,
+      "tool_name": "T4_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T4"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902115,
+      "tool_name": "T3_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T3"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902119,
+      "tool_name": "T5_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T5"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.9021251,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902129,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902134,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902139,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902144,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902148,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902153,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902158,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902164,
+      "tool_name": "T6_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T6"
+      }
+    },
+    {
+      "event_type": "compensation",
+      "timestamp": 1767596062.902169,
+      "tool_name": "T1_compensation",
+      "args": null,
+      "result": "success",
+      "success": true,
+      "reasoning": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "original_action": "T1"
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767596065.7229922,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 826,
+        "output_tokens": 439,
+        "total_tokens": 1265,
+        "model": null
+      }
+    },
+    {
+      "event_type": "replan",
+      "timestamp": 1767596065.7240078,
+      "tool_name": null,
+      "args": null,
+      "result": "Context-preserving replan #2 with 8 tasks",
+      "success": true,
+      "reasoning": "Persistent context: {'failed_attempts': [{'action': 'unknown_action', 'params': {}, 'error': 'Unknown failure', 'timestamp': '2026-01-05T12:24:22.902235', 'attempt_number': 1, 'is_permanent': False}], 'permanent_failures': 0, 'completed_jobs': [], 'failure_count': 1, 'replan_count': 1}",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1767596065.724015,
+      "tool_name": "modify_plan",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Replan with persistent context: 1 failed attempts, 0 permanent",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "strategic_replan",
+        "new_task_count": 8,
+        "failed_attempts": 1,
+        "permanent_failures": 0,
+        "replan_number": 2
+      }
+    },
+    {
+      "event_type": "plan_generation",
+      "timestamp": 1767596065.724082,
+      "tool_name": null,
+      "args": null,
+      "result": [
+        "allocate_resource",
+        "assign_task",
+        "assign_task",
+        "assign_vehicle",
+        "assign_vehicle",
+        "allocate_resource",
+        "allocate_resource",
+        "allocate_resource"
+      ],
+      "success": null,
+      "reasoning": "Generated plan 'task_replan_2' with 8 tasks",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "dependencies": [],
+        "constraints": [
+          "Dinner serving deadline",
+          "Kitchen workspace capacity",
+          "Flight arrival schedules",
+          "Replan #2 with persistent context",
+          "Failed attempts: 1",
+          "Permanent failures: 0"
+        ]
+      }
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1767596065.724086,
+      "tool_name": "generate_plan",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Phase 1: Generated workflow plan for '\nExecute the following planning task:\n\nTask: Thanksgiving Dinner with Disruptions\nDescription: Plann...'",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "plan_generation",
+        "task_count": 8
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767596123.5669482,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 57797,
+        "output_tokens": 16060,
+        "total_tokens": 73857,
+        "model": "gemini-2.0-flash"
+      }
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1767596123.566954,
+      "tool_name": "generate_code",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Phase 2: Generated 8 agents and 8 compensations",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "code_generation",
+        "total_tokens": 73857
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767596123.602096,
+      "tool_name": "allocate_resource",
+      "args": {
+        "resource_type": "oven",
+        "quantity": 1,
+        "destination": "turkey_task_1",
+        "allocated_by": "system"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767596123.604264,
+      "tool_name": "assign_task",
+      "args": {
+        "task_id": "turkey",
+        "assignee_id": "mom",
+        "start_time": null,
+        "end_time": null,
+        "dependencies": null
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767596123.605286,
+      "tool_name": "allocate_resource",
+      "args": null,
+      "result": "SUCCESS: Allocated 1 units of oven to turkey_task_1. Allocation ID: alloc_oven_turkey_task_1_1",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767596123.605919,
+      "tool_name": "assign_task",
+      "args": {
+        "task_id": "potatoes",
+        "assignee_id": "dad",
+        "start_time": 0,
+        "end_time": 100,
+        "dependencies": []
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767596123.6063979,
+      "tool_name": "assign_vehicle",
+      "args": {
+        "vehicle_id": "car2",
+        "passenger_id": "dad",
+        "route_id": null,
+        "pickup_location": "flight2",
+        "dropoff_location": "home",
+        "start_time": 0,
+        "end_time": 100
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767596123.606943,
+      "tool_name": "allocate_resource",
+      "args": {
+        "resource_type": "stove",
+        "quantity": 1,
+        "destination": "stuffing",
+        "allocated_by": "agent"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767596123.6086311,
+      "tool_name": "assign_vehicle",
+      "args": {
+        "vehicle_id": "car1",
+        "passenger_id": "mom",
+        "route_id": null,
+        "pickup_location": "flight1",
+        "dropoff_location": null,
+        "start_time": null,
+        "end_time": null
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767596123.609146,
+      "tool_name": "allocate_resource",
+      "args": {
+        "resource_type": "sink",
+        "quantity": 1,
+        "destination": "task_2",
+        "allocated_by": "task_1"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767596123.609544,
+      "tool_name": "allocate_resource",
+      "args": {
+        "resource_type": "counter_space",
+        "quantity": 1,
+        "destination": "gravy_task_1",
+        "allocated_by": "agent"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767596123.6101792,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": "SUCCESS: Task turkey assigned to mom. Assignment ID: task_turkey_mom",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767596123.611051,
+      "tool_name": "assign_vehicle",
+      "args": null,
+      "result": "SUCCESS: Vehicle car1 assigned to passenger mom. Assignment ID: assign_car1_mom",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767596123.6118011,
+      "tool_name": "allocate_resource",
+      "args": null,
+      "result": "SUCCESS: Allocated 1 units of stove to stuffing. Allocation ID: alloc_stove_stuffing_1",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767596123.6119502,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": "SUCCESS: Task potatoes assigned to dad from 0 to 100. Assignment ID: task_potatoes_dad",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767596123.6121442,
+      "tool_name": "allocate_resource",
+      "args": null,
+      "result": "SUCCESS: Allocated 1 units of counter_space to gravy_task_1. Allocation ID: alloc_counter_space_gravy_task_1_1",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767596123.612215,
+      "tool_name": "allocate_resource",
+      "args": null,
+      "result": "SUCCESS: Allocated 1 units of sink to task_2. Allocation ID: alloc_sink_task_2_1",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767596123.613184,
+      "tool_name": "assign_vehicle",
+      "args": null,
+      "result": "SUCCESS: Vehicle car2 assigned to passenger dad, from flight2 to home. Assignment ID: assign_car2_dad",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    }
+  ],
+  "compensation_events": [
+    {
+      "original_action": "T4",
+      "compensation_action": "T4_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901035
+    },
+    {
+      "original_action": "T3",
+      "compensation_action": "T3_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901429
+    },
+    {
+      "original_action": "T5",
+      "compensation_action": "T5_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.9018009
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901809
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901818
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901834
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.9018428
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901862
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901877
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901896
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901907
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.9019141
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.90192
+    },
+    {
+      "original_action": "T4",
+      "compensation_action": "T4_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901925
+    },
+    {
+      "original_action": "T3",
+      "compensation_action": "T3_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901929
+    },
+    {
+      "original_action": "T5",
+      "compensation_action": "T5_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.9019341
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.9019399
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901945
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901949
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901954
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901959
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901964
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901969
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901974
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901979
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901984
+    },
+    {
+      "original_action": "T4",
+      "compensation_action": "T4_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901988
+    },
+    {
+      "original_action": "T3",
+      "compensation_action": "T3_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.9019918
+    },
+    {
+      "original_action": "T5",
+      "compensation_action": "T5_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.901995
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.9020002
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902005
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.9020102
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902015
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.90202
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902026
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.9020312
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902036
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.9020412
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902046
+    },
+    {
+      "original_action": "T4",
+      "compensation_action": "T4_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.90205
+    },
+    {
+      "original_action": "T3",
+      "compensation_action": "T3_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.9020538
+    },
+    {
+      "original_action": "T5",
+      "compensation_action": "T5_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902058
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.9020631
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902069
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902074
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902078
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.9020832
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902088
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.9020932
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902098
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902103
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902108
+    },
+    {
+      "original_action": "T4",
+      "compensation_action": "T4_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902112
+    },
+    {
+      "original_action": "T3",
+      "compensation_action": "T3_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902115
+    },
+    {
+      "original_action": "T5",
+      "compensation_action": "T5_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902119
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.9021251
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902129
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902134
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902139
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902144
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902148
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902153
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902158
+    },
+    {
+      "original_action": "T6",
+      "compensation_action": "T6_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902164
+    },
+    {
+      "original_action": "T1",
+      "compensation_action": "T1_compensation",
+      "reason": "Task T7 failed: status=failed | Task T8 failed: status=failed | Precondition failed: Oven is not allocated to turkey",
+      "success": true,
+      "timestamp": 1767596062.902169
+    }
+  ],
+  "disruptions": [],
+  "summary": {
+    "llm_decision_count": 8,
+    "tool_call_count": 15,
+    "retry_count": 0,
+    "replan_count": 1,
+    "compensation_count": 65,
+    "total_events": 110,
+    "input_tokens": 88781,
+    "output_tokens": 26317,
+    "total_tokens": 115098
+  },
+  "final_state": {
+    "completed_tasks": [
+      "T1",
+      "T2",
+      "T4",
+      "T6",
+      "T3",
+      "T7",
+      "T8",
+      "T5",
+      "T1",
+      "T2",
+      "T4",
+      "T6",
+      "T3",
+      "T7",
+      "T8",
+      "T5",
+      "T1",
+      "T2",
+      "T4",
+      "T6",
+      "T3",
+      "T7",
+      "T8",
+      "T5",
+      "T1",
+      "T2",
+      "T4",
+      "T6",
+      "T3",
+      "T7",
+      "T8",
+      "T5",
+      "T1",
+      "T2",
+      "T4",
+      "T6",
+      "T3",
+      "T7",
+      "T8",
+      "T5",
+      "T1",
+      "T2",
+      "T4",
+      "T6",
+      "T3",
+      "T7",
+      "T8",
+      "T5",
+      "T1",
+      "T2",
+      "T4",
+      "T6",
+      "T3",
+      "T7",
+      "T8",
+      "T5",
+      "T1",
+      "T2",
+      "T4",
+      "T6",
+      "T3",
+      "T7",
+      "T8",
+      "T5",
+      "T1",
+      "T2",
+      "T4",
+      "T6",
+      "T3",
+      "T7",
+      "T8",
+      "T5"
+    ],
+    "failed_tasks": [],
+    "saga_status": "active"
+  },
+  "success": true,
+  "error": null
+}

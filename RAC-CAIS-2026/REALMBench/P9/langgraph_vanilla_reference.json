@@ -1,0 +1,777 @@
+{
+  "task_id": "P9",
+  "framework": "langgraph",
+  "start_time": 1767601766.6550882,
+  "end_time": 1767601806.984129,
+  "duration": 40.32904076576233,
+  "events": [
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601769.684433,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1136,
+        "output_tokens": 330,
+        "total_tokens": 1466,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601770.665266,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1175,
+        "output_tokens": 16,
+        "total_tokens": 1191,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601771.688133,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1214,
+        "output_tokens": 13,
+        "total_tokens": 1227,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601773.172696,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1248,
+        "output_tokens": 13,
+        "total_tokens": 1261,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601774.192765,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1282,
+        "output_tokens": 16,
+        "total_tokens": 1298,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601775.344408,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1324,
+        "output_tokens": 16,
+        "total_tokens": 1340,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601776.588331,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1366,
+        "output_tokens": 54,
+        "total_tokens": 1420,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601777.605418,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1435,
+        "output_tokens": 11,
+        "total_tokens": 1446,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601778.636847,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1500,
+        "output_tokens": 11,
+        "total_tokens": 1511,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601780.353128,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1536,
+        "output_tokens": 14,
+        "total_tokens": 1550,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601781.711651,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1581,
+        "output_tokens": 74,
+        "total_tokens": 1655,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601783.301055,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1619,
+        "output_tokens": 93,
+        "total_tokens": 1712,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601784.5497851,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1654,
+        "output_tokens": 13,
+        "total_tokens": 1667,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601785.565848,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1689,
+        "output_tokens": 16,
+        "total_tokens": 1705,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601786.692178,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1728,
+        "output_tokens": 16,
+        "total_tokens": 1744,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601787.7134342,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1767,
+        "output_tokens": 15,
+        "total_tokens": 1782,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601789.343884,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1809,
+        "output_tokens": 104,
+        "total_tokens": 1913,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601790.556822,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1855,
+        "output_tokens": 20,
+        "total_tokens": 1875,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601791.927128,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1901,
+        "output_tokens": 67,
+        "total_tokens": 1968,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601792.953683,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1943,
+        "output_tokens": 11,
+        "total_tokens": 1954,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601796.104792,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1981,
+        "output_tokens": 14,
+        "total_tokens": 1995,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601797.169077,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 2028,
+        "output_tokens": 12,
+        "total_tokens": 2040,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601799.9971058,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 2068,
+        "output_tokens": 11,
+        "total_tokens": 2079,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601804.731631,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 2106,
+        "output_tokens": 14,
+        "total_tokens": 2120,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767601806.977918,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 2151,
+        "output_tokens": 11,
+        "total_tokens": 2162,
+        "model": null
+      }
+    }
+  ],
+  "compensation_events": [],
+  "disruptions": [],
+  "summary": {
+    "llm_decision_count": 0,
+    "tool_call_count": 0,
+    "retry_count": 0,
+    "replan_count": 0,
+    "compensation_count": 0,
+    "total_events": 25,
+    "input_tokens": 41096,
+    "output_tokens": 985,
+    "total_tokens": 42081
+  },
+  "final_state": {
+    "action_history": [
+      {
+        "action": "assign_vehicle",
+        "data": {
+          "assignment_id": "assign_car2_mom",
+          "vehicle_id": "car2",
+          "passenger_id": "mom",
+          "route_id": null,
+          "pickup_location": "airport",
+          "dropoff_location": null,
+          "start_time": null,
+          "end_time": null,
+          "status": "assigned"
+        },
+        "timestamp": 1767601769.688402,
+        "type": "action"
+      },
+      {
+        "action": "assign_vehicle",
+        "data": {
+          "assignment_id": "assign_car2_dad",
+          "vehicle_id": "car2",
+          "passenger_id": "dad",
+          "route_id": null,
+          "pickup_location": "airport",
+          "dropoff_location": null,
+          "start_time": null,
+          "end_time": null,
+          "status": "assigned"
+        },
+        "timestamp": 1767601770.6677911,
+        "type": "action"
+      },
+      {
+        "action": "assign_task",
+        "data": {
+          "assignment_id": "task_turkey_mom",
+          "task_id": "turkey",
+          "assignee_id": "mom",
+          "start_time": null,
+          "end_time": null,
+          "dependencies": [],
+          "status": "assigned"
+        },
+        "timestamp": 1767601771.6911092,
+        "type": "action"
+      },
+      {
+        "action": "assign_task",
+        "data": {
+          "assignment_id": "task_potatoes_dad",
+          "task_id": "potatoes",
+          "assignee_id": "dad",
+          "start_time": null,
+          "end_time": null,
+          "dependencies": [],
+          "status": "assigned"
+        },
+        "timestamp": 1767601773.175906,
+        "type": "action"
+      },
+      {
+        "action": "assign_task",
+        "data": {
+          "assignment_id": "task_gravy_dad",
+          "task_id": "gravy",
+          "assignee_id": "dad",
+          "start_time": null,
+          "end_time": null,
+          "dependencies": [
+            "potatoes"
+          ],
+          "status": "assigned"
+        },
+        "timestamp": 1767601774.1952279,
+        "type": "action"
+      },
+      {
+        "action": "assign_task",
+        "data": {
+          "assignment_id": "task_stuffing_mom",
+          "task_id": "stuffing",
+          "assignee_id": "mom",
+          "start_time": null,
+          "end_time": null,
+          "dependencies": [
+            "turkey"
+          ],
+          "status": "assigned"
+        },
+        "timestamp": 1767601775.34691,
+        "type": "action"
+      },
+      {
+        "action": "allocate_resource",
+        "data": {
+          "allocation_id": "alloc_water_home_5",
+          "resource_type": "water",
+          "quantity": 5,
+          "destination": "home",
+          "allocated_by": null,
+          "status": "allocated"
+        },
+        "timestamp": 1767601778.6394749,
+        "type": "action"
+      },
+      {
+        "action": "allocate_resource",
+        "data": {
+          "allocation_id": "alloc_medical_supplies_home_5",
+          "resource_type": "medical_supplies",
+          "quantity": 5,
+          "destination": "home",
+          "allocated_by": null,
+          "status": "allocated"
+        },
+        "timestamp": 1767601780.356891,
+        "type": "action"
+      },
+      {
+        "action": "allocate_resource",
+        "data": {
+          "allocation_id": "alloc_food_home_10",
+          "resource_type": "food",
+          "quantity": 10,
+          "destination": "home",
+          "allocated_by": null,
+          "status": "allocated"
+        },
+        "timestamp": 1767601781.716046,
+        "type": "action"
+      },
+      {
+        "action": "assign_vehicle",
+        "data": {
+          "assignment_id": "assign_car1_mom",
+          "vehicle_id": "car1",
+          "passenger_id": "mom",
+          "route_id": null,
+          "pickup_location": "airport",
+          "dropoff_location": null,
+          "start_time": null,
+          "end_time": null,
+          "status": "assigned"
+        },
+        "timestamp": 1767601785.5687659,
+        "type": "action"
+      },
+      {
+        "action": "assign_vehicle",
+        "data": {
+          "assignment_id": "assign_car2_dad",
+          "vehicle_id": "car2",
+          "passenger_id": "dad",
+          "route_id": null,
+          "pickup_location": "airport",
+          "dropoff_location": null,
+          "start_time": null,
+          "end_time": null,
+          "status": "assigned"
+        },
+        "timestamp": 1767601786.6951191,
+        "type": "action"
+      },
+      {
+        "action": "allocate_resource",
+        "data": {
+          "allocation_id": "alloc_food_home_20",
+          "resource_type": "food",
+          "quantity": 20,
+          "destination": "home",
+          "allocated_by": "system",
+          "status": "allocated"
+        },
+        "timestamp": 1767601787.716247,
+        "type": "action"
+      },
+      {
+        "action": "assign_task",
+        "data": {
+          "assignment_id": "task_stuffing_mom",
+          "task_id": "stuffing",
+          "assignee_id": "mom",
+          "start_time": null,
+          "end_time": 1677777777,
+          "dependencies": [
+            "turkey"
+          ],
+          "status": "assigned"
+        },
+        "timestamp": 1767601789.348263,
+        "type": "action"
+      },
+      {
+        "action": "assign_task",
+        "data": {
+          "assignment_id": "task_gravy_dad",
+          "task_id": "gravy",
+          "assignee_id": "dad",
+          "start_time": null,
+          "end_time": 1677777777,
+          "dependencies": [
+            "potatoes"
+          ],
+          "status": "assigned"
+        },
+        "timestamp": 1767601790.559733,
+        "type": "action"
+      },
+      {
+        "action": "allocate_resource",
+        "data": {
+          "allocation_id": "alloc_food_home_15",
+          "resource_type": "food",
+          "quantity": 15,
+          "destination": "home",
+          "allocated_by": "system",
+          "status": "allocated"
+        },
+        "timestamp": 1767601791.930859,
+        "type": "action"
+      },
+      {
+        "action": "allocate_resource",
+        "data": {
+          "allocation_id": "alloc_water_home_30",
+          "resource_type": "water",
+          "quantity": 30,
+          "destination": "home",
+          "allocated_by": null,
+          "status": "allocated"
+        },
+        "timestamp": 1767601792.956634,
+        "type": "action"
+      },
+      {
+        "action": "allocate_resource",
+        "data": {
+          "allocation_id": "alloc_medical_supplies_home_10",
+          "resource_type": "medical_supplies",
+          "quantity": 10,
+          "destination": "home",
+          "allocated_by": null,
+          "status": "allocated"
+        },
+        "timestamp": 1767601796.1101062,
+        "type": "action"
+      },
+      {
+        "action": "allocate_resource",
+        "data": {
+          "allocation_id": "alloc_cutlery_home_12",
+          "resource_type": "cutlery",
+          "quantity": 12,
+          "destination": "home",
+          "allocated_by": null,
+          "status": "allocated"
+        },
+        "timestamp": 1767601797.1721568,
+        "type": "action"
+      },
+      {
+        "action": "allocate_resource",
+        "data": {
+          "allocation_id": "alloc_plates_home_15",
+          "resource_type": "plates",
+          "quantity": 15,
+          "destination": "home",
+          "allocated_by": null,
+          "status": "allocated"
+        },
+        "timestamp": 1767601800.002597,
+        "type": "action"
+      },
+      {
+        "action": "allocate_resource",
+        "data": {
+          "allocation_id": "alloc_serving_dishes_home_2",
+          "resource_type": "serving_dishes",
+          "quantity": 2,
+          "destination": "home",
+          "allocated_by": null,
+          "status": "allocated"
+        },
+        "timestamp": 1767601804.736562,
+        "type": "action"
+      },
+      {
+        "action": "allocate_resource",
+        "data": {
+          "allocation_id": "alloc_table_home_1",
+          "resource_type": "table",
+          "quantity": 1,
+          "destination": "home",
+          "allocated_by": null,
+          "status": "allocated"
+        },
+        "timestamp": 1767601806.981072,
+        "type": "action"
+      }
+    ]
+  },
+  "success": false,
+  "error": "Recursion limit of 50 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langgraph/errors/GRAPH_RECURSION_LIMIT"
+}

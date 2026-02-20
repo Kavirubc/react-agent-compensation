@@ -1,0 +1,619 @@
+{
+  "task_id": "P11_BASE",
+  "framework": "react_agent_compensation",
+  "start_time": 1767677623.9144242,
+  "end_time": 1767677633.5700579,
+  "duration": 9.655633687973022,
+  "events": [
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767677626.607908,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 672,
+        "output_tokens": 309,
+        "total_tokens": 981,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767677628.182771,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 731,
+        "output_tokens": 23,
+        "total_tokens": 754,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767677630.111382,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 790,
+        "output_tokens": 23,
+        "total_tokens": 813,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767677631.541779,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 838,
+        "output_tokens": 23,
+        "total_tokens": 861,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767677632.6915278,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 886,
+        "output_tokens": 23,
+        "total_tokens": 909,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1767677633.565609,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 934,
+        "output_tokens": 14,
+        "total_tokens": 948,
+        "model": null
+      }
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767677633.568896,
+      "tool_name": null,
+      "args": null,
+      "result": "\nExecute the following planning task:\n\nTask: Job Shop Scheduling (JSSP) - Pure\nDescription: Canonical combinatorial optimization task without any runtime disruptions.\n\nGoals:\n- Minimize total completion time\n- Minimize machine idle time\n- Balance workload across machines\n\nConstraints:\n- Jobs must follow precedence constraints\n- Each machine can process one job at a time\n- All jobs must complete by deadline\n\nResources Available:\n{'machines': 3, 'jobs': 5, 'processing_times': [[2, 3, 1], [4, 2, 3]",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1767677633.568911,
+      "tool_name": "schedule_job",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Okay, I understand the task. I need to schedule 5 jobs on 3 machines, considering their processing times, precedence constraints (if any), and the goal of minimizing total completion time (makespan), machine idle time, and balancing workload across machines. I will use the `schedule_job` tool to assign jobs to machines at specific start times.\n\nHere's my plan:\n\n1. **Initial Scheduling:** I'll start by assigning each job to a machine based on the shortest processing time for that job on any avail",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "duration": 1,
+          "machine_id": "machine_3",
+          "start_time": 0,
+          "priority": 1,
+          "job_id": "job_1"
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767677633.568917,
+      "tool_name": "schedule_job",
+      "args": {
+        "duration": 1,
+        "machine_id": "machine_3",
+        "start_time": 0,
+        "priority": 1,
+        "job_id": "job_1"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767677633.568933,
+      "tool_name": null,
+      "args": null,
+      "result": "Okay, I understand the task. I need to schedule 5 jobs on 3 machines, considering their processing times, precedence constraints (if any), and the goal of minimizing total completion time (makespan), machine idle time, and balancing workload across machines. I will use the `schedule_job` tool to assign jobs to machines at specific start times.\n\nHere's my plan:\n\n1. **Initial Scheduling:** I'll start by assigning each job to a machine based on the shortest processing time for that job on any avail",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767677633.568948,
+      "tool_name": "schedule_job",
+      "args": null,
+      "result": "<react_agent_compensation.langchain_adaptor.adapters.SimpleActionResult object at 0x1258d70e0>",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1767677633.5689542,
+      "tool_name": "schedule_job",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Agent decided to call schedule_job",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "start_time": 0,
+          "priority": 1,
+          "machine_id": "machine_1",
+          "duration": 3,
+          "job_id": "job_2"
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767677633.568959,
+      "tool_name": "schedule_job",
+      "args": {
+        "start_time": 0,
+        "priority": 1,
+        "machine_id": "machine_1",
+        "duration": 3,
+        "job_id": "job_2"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767677633.568963,
+      "tool_name": null,
+      "args": null,
+      "result": "",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767677633.568971,
+      "tool_name": "schedule_job",
+      "args": null,
+      "result": "<react_agent_compensation.langchain_adaptor.adapters.SimpleActionResult object at 0x1258d8550>",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1767677633.5689752,
+      "tool_name": "schedule_job",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Agent decided to call schedule_job",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "duration": 1,
+          "priority": 1,
+          "start_time": 3,
+          "job_id": "job_3",
+          "machine_id": "machine_1"
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767677633.5689769,
+      "tool_name": "schedule_job",
+      "args": {
+        "duration": 1,
+        "priority": 1,
+        "start_time": 3,
+        "job_id": "job_3",
+        "machine_id": "machine_1"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767677633.568981,
+      "tool_name": null,
+      "args": null,
+      "result": "",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767677633.568987,
+      "tool_name": "schedule_job",
+      "args": null,
+      "result": "{\"status\": \"success\", \"job_id\": \"job_3\", \"machine_id\": \"machine_1\", \"start_time\": 3, \"end_time\": 4}",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1767677633.56899,
+      "tool_name": "schedule_job",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Agent decided to call schedule_job",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "priority": 1,
+          "start_time": 0,
+          "machine_id": "machine_2",
+          "duration": 1,
+          "job_id": "job_4"
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767677633.568992,
+      "tool_name": "schedule_job",
+      "args": {
+        "priority": 1,
+        "start_time": 0,
+        "machine_id": "machine_2",
+        "duration": 1,
+        "job_id": "job_4"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767677633.568995,
+      "tool_name": null,
+      "args": null,
+      "result": "",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767677633.569001,
+      "tool_name": "schedule_job",
+      "args": null,
+      "result": "{\"status\": \"success\", \"job_id\": \"job_4\", \"machine_id\": \"machine_2\", \"start_time\": 0, \"end_time\": 1}",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1767677633.569003,
+      "tool_name": "schedule_job",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Agent decided to call schedule_job",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "duration": 1,
+          "start_time": 1,
+          "job_id": "job_5",
+          "machine_id": "machine_3",
+          "priority": 1
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1767677633.569005,
+      "tool_name": "schedule_job",
+      "args": {
+        "duration": 1,
+        "start_time": 1,
+        "job_id": "job_5",
+        "machine_id": "machine_3",
+        "priority": 1
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767677633.569008,
+      "tool_name": null,
+      "args": null,
+      "result": "",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767677633.569014,
+      "tool_name": "schedule_job",
+      "args": null,
+      "result": "{\"status\": \"success\", \"job_id\": \"job_5\", \"machine_id\": \"machine_3\", \"start_time\": 1, \"end_time\": 2}",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1767677633.5690181,
+      "tool_name": null,
+      "args": null,
+      "result": "The scheduling is complete. All jobs have been scheduled on machines.",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "disruption",
+      "timestamp": 1767677633.5691469,
+      "tool_name": "unknown",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "{'disruption': 'transient_overload', 'tool': 'schedule_job', 'args': {'job_id': 'job_1', 'machine_id': 'machine_3'}, 'action_count': 1, 'error_message': 'Machine temporarily overloaded - please retry after a moment (this is a temporary issue, retry may succeed)', 'persistent': False}",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "disruption_type": "unknown"
+      }
+    },
+    {
+      "event_type": "disruption",
+      "timestamp": 1767677633.5691571,
+      "tool_name": "unknown",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "{'disruption': 'transient_overload', 'tool': 'schedule_job', 'args': {'job_id': 'job_1', 'machine_id': 'machine_3'}, 'action_count': 2, 'error_message': 'Machine temporarily overloaded - please retry after a moment (this is a temporary issue, retry may succeed)', 'persistent': False}",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "disruption_type": "unknown"
+      }
+    },
+    {
+      "event_type": "disruption",
+      "timestamp": 1767677633.569163,
+      "tool_name": "unknown",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "{'disruption': 'transient_overload', 'tool': 'schedule_job', 'args': {'job_id': 'job_2', 'machine_id': 'machine_1'}, 'action_count': 3, 'error_message': 'Machine temporarily overloaded - please retry after a moment (this is a temporary issue, retry may succeed)', 'persistent': False}",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "disruption_type": "unknown"
+      }
+    }
+  ],
+  "compensation_events": [],
+  "disruptions": [
+    {
+      "type": "unknown",
+      "affected_tool": "unknown",
+      "details": "{'disruption': 'transient_overload', 'tool': 'schedule_job', 'args': {'job_id': 'job_1', 'machine_id': 'machine_3'}, 'action_count': 1, 'error_message': 'Machine temporarily overloaded - please retry after a moment (this is a temporary issue, retry may succeed)', 'persistent': False}",
+      "timestamp": 1767677633.5691462
+    },
+    {
+      "type": "unknown",
+      "affected_tool": "unknown",
+      "details": "{'disruption': 'transient_overload', 'tool': 'schedule_job', 'args': {'job_id': 'job_1', 'machine_id': 'machine_3'}, 'action_count': 2, 'error_message': 'Machine temporarily overloaded - please retry after a moment (this is a temporary issue, retry may succeed)', 'persistent': False}",
+      "timestamp": 1767677633.5691562
+    },
+    {
+      "type": "unknown",
+      "affected_tool": "unknown",
+      "details": "{'disruption': 'transient_overload', 'tool': 'schedule_job', 'args': {'job_id': 'job_2', 'machine_id': 'machine_1'}, 'action_count': 3, 'error_message': 'Machine temporarily overloaded - please retry after a moment (this is a temporary issue, retry may succeed)', 'persistent': False}",
+      "timestamp": 1767677633.569163
+    }
+  ],
+  "summary": {
+    "llm_decision_count": 5,
+    "tool_call_count": 5,
+    "retry_count": 0,
+    "replan_count": 0,
+    "compensation_count": 0,
+    "total_events": 31,
+    "input_tokens": 4851,
+    "output_tokens": 415,
+    "total_tokens": 5266
+  },
+  "final_state": {
+    "scheduled_jobs": 4,
+    "assigned_vehicles": 0,
+    "action_history": [
+      {
+        "action": "schedule_job",
+        "data": {
+          "job_id": "job_2",
+          "machine_id": "machine_1",
+          "start_time": 0,
+          "end_time": 3,
+          "duration": 3,
+          "priority": 1,
+          "status": "scheduled"
+        },
+        "timestamp": 1767677629.067664,
+        "type": "action"
+      },
+      {
+        "action": "schedule_job",
+        "data": {
+          "job_id": "job_3",
+          "machine_id": "machine_1",
+          "start_time": 3,
+          "end_time": 4,
+          "duration": 1,
+          "priority": 1,
+          "status": "scheduled"
+        },
+        "timestamp": 1767677630.116426,
+        "type": "action"
+      },
+      {
+        "action": "schedule_job",
+        "data": {
+          "job_id": "job_4",
+          "machine_id": "machine_2",
+          "start_time": 0,
+          "end_time": 1,
+          "duration": 1,
+          "priority": 1,
+          "status": "scheduled"
+        },
+        "timestamp": 1767677631.547031,
+        "type": "action"
+      },
+      {
+        "action": "schedule_job",
+        "data": {
+          "job_id": "job_5",
+          "machine_id": "machine_3",
+          "start_time": 1,
+          "end_time": 2,
+          "duration": 1,
+          "priority": 1,
+          "status": "scheduled"
+        },
+        "timestamp": 1767677632.6956558,
+        "type": "action"
+      }
+    ]
+  },
+  "success": true,
+  "error": null
+}

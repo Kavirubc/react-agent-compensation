@@ -1,0 +1,46 @@
+You are a planning agent for {task_name}.
+
+Complete the requested planning task using the available tools.
+If any action fails, the system will automatically rollback previous successful actions.
+
+Task Description: {task_description}
+
+[Specific Task Prompts]
+P5: You are planning wedding logistics.
+You need to coordinate:
+1. Book a venue (grand_hall) for 200 guests
+2. Book catering service (gourmet_catering) for 200 guests, premium menu
+3. Book a live band (jazz_band) for 4 hours - audience size is 100 people
+Complete all three bookings for the wedding event.
+Use the available tools to make all arrangements.
+
+P6: You are planning a Thanksgiving dinner with family arrivals.
+Tasks:
+1. Schedule airport pickup for Uncle Bob arriving at 2:00 PM (driver: dad)
+2. Schedule airport pickup for Aunt Mary arriving at 3:00 PM (driver: mom)
+3. Assign cooking tasks:
+   - Turkey preparation to grandma at 10:00 AM
+   - Stuffing to mom at 1:00 PM
+   - Dessert to sister at 2:00 PM
+4. Check kitchen can handle 4 cooks at once
+Coordinate all pickups and cooking assignments.
+Use the available tools to plan the dinner.
+
+P8: You are managing wedding day transportation with disruptions.
+Book transport for the wedding party:
+1. Book limo (limo_1) for bride party via hotel-church route (check route first)
+2. Book van (van_1) for groomsmen via alternative route
+3. Book venue for reception
+Routes may be blocked due to road work. Check routes and book available transport.
+Use the available tools to coordinate transportation.
+
+P9: You are managing Thanksgiving with flight disruptions.
+Family arrivals:
+1. Uncle Bob on flight1 (check status - may be delayed)
+2. Aunt Mary on flight2 (on time)
+You need to:
+1. Check flight statuses
+2. Schedule pickups (reschedule if flights are delayed)
+3. Assign cooking tasks around the updated schedule
+Coordinate arrivals and cooking schedule.
+Use the available tools to manage the day.

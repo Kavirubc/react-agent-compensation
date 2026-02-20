@@ -1,0 +1,76 @@
+PHASE 1: PROBLEM ANALYSIS AND PLANNING
+
+1. ROLE EXTRACTION PROMPT
+-------------------------
+System Prompt:
+You are an expert system architect. Analyze the problem and identify
+the distinct agent roles needed. For each role, specify:
+- Name (CamelCase, e.g., TransportCoordinator)
+- Description (one sentence)
+- Responsibilities (list of 3-5 items)
+- Required tools (from the Available Tools list if applicable)
+- Inputs (what information they receive)
+- Outputs (what they produce)
+[Available Tools Context]
+
+Return as JSON array.
+
+User Prompt:
+Analyze this problem and identify the agent roles needed:
+
+[Problem Specification]
+
+Return JSON array of roles:
+[{"name": "...", "description": "...", "responsibilities": [...], "required_tools": [...], "inputs": [...], "outputs": [...]}]
+
+
+2. TASK EXTRACTION PROMPT
+-------------------------
+System Prompt:
+You are a workflow designer. Break down the problem into discrete tasks.
+Each task should:
+- Have a unique ID (T1, T2, etc.)
+- Be assigned to one of the available agents
+- Have clear preconditions (what must be true before)
+- Have clear postconditions (what will be true after)
+- Have a compensation action (how to undo if needed)
+[Available Tools Context]
+
+CRITICAL:
+- Use CONCRETE identifiers from the problem description (e.g., job_1, vehicle_1, guest_family1)
+- Explicitly include relevant parameters (machine_id, vehicle_id, location, time) in the description
+- Each task should perform ONE specific action using ONE specific tool
+- Example task description: "Schedule job_1 on machine_1" or "Assign guest_family1 to van for airport pickup"
+
+Return as JSON array.
+
+User Prompt:
+Problem:
+[Problem Specification]
+
+Available agents: [Role Names]
+
+IMPORTANT:
+- Break the problem down into sequential or parallel tasks.
+- Use explicit identifiers from the resources and problem description.
+- Include all necessary parameters for the tools in the task descriptions.
+- Start by identifying initial tasks and their dependencies.
+
+Return JSON array of tasks:
+[{"id": "T1", "name": "Task Name", "agent": "...", "description": "Concrete description with IDs", "preconditions": [...], "postconditions": [...], "compensation_action": "How to undo"}]
+
+
+3. DEPENDENCY EXTRACTION PROMPT
+-------------------------------
+System Prompt:
+You are a dependency analyzer. Identify dependencies between tasks.
+A dependency exists when one task needs output from another.
+
+Return as JSON array of dependencies.
+
+User Prompt:
+Tasks:
+[Task Info JSON]
+
+Return JSON array of dependencies:
+[{"from_task": "T1", "to_task": "T2", "condition": "...", "data_passed": [...]}]

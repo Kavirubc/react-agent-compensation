@@ -1,0 +1,563 @@
+{
+  "task_id": "P8",
+  "framework": "saga_react",
+  "start_time": 1771428532.158755,
+  "end_time": 1771428554.15583,
+  "duration": 21.997074842453003,
+  "events": [
+    {
+      "event_type": "token_usage",
+      "timestamp": 1771428539.328483,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1545,
+        "output_tokens": 217,
+        "total_tokens": 1762,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1771428540.7953038,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1598,
+        "output_tokens": 15,
+        "total_tokens": 1613,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1771428544.848641,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1639,
+        "output_tokens": 19,
+        "total_tokens": 1658,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1771428546.486741,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1691,
+        "output_tokens": 15,
+        "total_tokens": 1706,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1771428547.539711,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1732,
+        "output_tokens": 20,
+        "total_tokens": 1752,
+        "model": null
+      }
+    },
+    {
+      "event_type": "token_usage",
+      "timestamp": 1771428554.151629,
+      "tool_name": null,
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "input_tokens": 1786,
+        "output_tokens": 87,
+        "total_tokens": 1873,
+        "model": null
+      }
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771428554.1552582,
+      "tool_name": null,
+      "args": null,
+      "result": "\nExecute the following planning task:\n\nTask: Wedding Logistics with Disruptions\nDescription: Planning and scheduling with road closures and timing conflicts requiring reactive replanning\n\nGoals:\n- Coordinate all guest arrivals\n- Complete all required errands\n- Successfully adapt to disruptions\n\nConstraints:\n- Wedding ceremony deadline\n- Vehicle passenger capacity\n- Route availability constraints\n\nResources Available:\n{'vehicles': [{'id': 'van', 'capacity': 8, 'location': 'hotel'}, {'id': 'car1',",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1771428554.1552682,
+      "tool_name": "assign_vehicle",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Okay, I understand the task. Here's the plan:\n\n**Initial Plan:**\n\n1.  **Guest Transport:**\n    *   Assign the van to pick up family1 from the airport and take them to the hotel.\n2.  **Errands:**\n    *   Assign the task of picking up flowers to car1.\n    *   Assign the task of picking up the cake to car1 after the flowers are picked up.\n    *   Assign the task of picking up decorations to the van.\n    *   Assign the task of picking up the photographer to the van after the decorations are picked u",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "pickup_location": "airport",
+          "vehicle_id": "van",
+          "passenger_id": "family1",
+          "start_time": 1400,
+          "dropoff_location": "hotel"
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1771428554.155273,
+      "tool_name": "assign_vehicle",
+      "args": {
+        "pickup_location": "airport",
+        "vehicle_id": "van",
+        "passenger_id": "family1",
+        "start_time": 1400,
+        "dropoff_location": "hotel"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771428554.155286,
+      "tool_name": null,
+      "args": null,
+      "result": "Okay, I understand the task. Here's the plan:\n\n**Initial Plan:**\n\n1.  **Guest Transport:**\n    *   Assign the van to pick up family1 from the airport and take them to the hotel.\n2.  **Errands:**\n    *   Assign the task of picking up flowers to car1.\n    *   Assign the task of picking up the cake to car1 after the flowers are picked up.\n    *   Assign the task of picking up decorations to the van.\n    *   Assign the task of picking up the photographer to the van after the decorations are picked u",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771428554.1552992,
+      "tool_name": "assign_vehicle",
+      "args": null,
+      "result": "SUCCESS: Vehicle van assigned to passenger family1, from airport to hotel. Assignment ID: assign_van_family1",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1771428554.155304,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Agent decided to call assign_task",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "task_id": "pickup_flowers",
+          "assignee_id": "car1"
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1771428554.155308,
+      "tool_name": "assign_task",
+      "args": {
+        "task_id": "pickup_flowers",
+        "assignee_id": "car1"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771428554.155312,
+      "tool_name": null,
+      "args": null,
+      "result": "",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771428554.155319,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": "SUCCESS: Task pickup_flowers assigned to car1. Assignment ID: task_pickup_flowers_car1",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1771428554.155322,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Agent decided to call assign_task",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "task_id": "pickup_cake",
+          "dependencies": [
+            "pickup_flowers"
+          ],
+          "assignee_id": "car1"
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1771428554.155324,
+      "tool_name": "assign_task",
+      "args": {
+        "task_id": "pickup_cake",
+        "dependencies": [
+          "pickup_flowers"
+        ],
+        "assignee_id": "car1"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771428554.155327,
+      "tool_name": null,
+      "args": null,
+      "result": "",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771428554.155333,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": "SUCCESS: Task pickup_cake assigned to car1 (depends on: pickup_flowers). Assignment ID: task_pickup_cake_car1",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1771428554.155335,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Agent decided to call assign_task",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "assignee_id": "van",
+          "task_id": "pickup_decorations"
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1771428554.155336,
+      "tool_name": "assign_task",
+      "args": {
+        "assignee_id": "van",
+        "task_id": "pickup_decorations"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771428554.155338,
+      "tool_name": null,
+      "args": null,
+      "result": "",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771428554.1553438,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": "SUCCESS: Task pickup_decorations assigned to van. Assignment ID: task_pickup_decorations_van",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "llm_decision",
+      "timestamp": 1771428554.155346,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": null,
+      "success": null,
+      "reasoning": "Agent decided to call assign_task",
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": {
+        "decision_type": "action_selection",
+        "tool_args": {
+          "dependencies": [
+            "pickup_decorations"
+          ],
+          "assignee_id": "van",
+          "task_id": "pickup_photographer"
+        }
+      }
+    },
+    {
+      "event_type": "tool_call",
+      "timestamp": 1771428554.155348,
+      "tool_name": "assign_task",
+      "args": {
+        "dependencies": [
+          "pickup_decorations"
+        ],
+        "assignee_id": "van",
+        "task_id": "pickup_photographer"
+      },
+      "result": null,
+      "success": null,
+      "reasoning": null,
+      "state_before": {},
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771428554.15535,
+      "tool_name": null,
+      "args": null,
+      "result": "",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771428554.155355,
+      "tool_name": "assign_task",
+      "args": null,
+      "result": "SUCCESS: Task pickup_photographer assigned to van (depends on: pickup_decorations). Assignment ID: task_pickup_photographer_van",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    },
+    {
+      "event_type": "tool_result",
+      "timestamp": 1771428554.155361,
+      "tool_name": null,
+      "args": null,
+      "result": "I have executed all steps in the plan. The van is assigned to pick up family1 from the airport and take them to the hotel. car1 is assigned to pick up flowers and then cake, with the cake pickup depending on the flower pickup. The van is assigned to pick up decorations and then the photographer, with the photographer pickup depending on the decorations pickup. This should complete all required errands and coordinate guest arrivals as planned.",
+      "success": true,
+      "reasoning": null,
+      "state_before": null,
+      "state_after": null,
+      "error": null,
+      "metadata": null
+    }
+  ],
+  "compensation_events": [],
+  "disruptions": [],
+  "summary": {
+    "llm_decision_count": 5,
+    "tool_call_count": 5,
+    "retry_count": 0,
+    "replan_count": 0,
+    "compensation_count": 0,
+    "total_events": 28,
+    "input_tokens": 9991,
+    "output_tokens": 373,
+    "total_tokens": 10364
+  },
+  "final_state": {
+    "scheduled_jobs": 0,
+    "assigned_vehicles": 1,
+    "action_history": [
+      {
+        "action": "assign_vehicle",
+        "data": {
+          "assignment_id": "assign_van_family1",
+          "vehicle_id": "van",
+          "passenger_id": "family1",
+          "route_id": null,
+          "pickup_location": "airport",
+          "dropoff_location": "hotel",
+          "start_time": 1400,
+          "end_time": null,
+          "status": "assigned"
+        },
+        "timestamp": 1771428539.332608,
+        "type": "action"
+      },
+      {
+        "action": "assign_task",
+        "data": {
+          "assignment_id": "task_pickup_flowers_car1",
+          "task_id": "pickup_flowers",
+          "assignee_id": "car1",
+          "start_time": null,
+          "end_time": null,
+          "dependencies": [],
+          "status": "assigned"
+        },
+        "timestamp": 1771428540.801086,
+        "type": "action"
+      },
+      {
+        "action": "assign_task",
+        "data": {
+          "assignment_id": "task_pickup_cake_car1",
+          "task_id": "pickup_cake",
+          "assignee_id": "car1",
+          "start_time": null,
+          "end_time": null,
+          "dependencies": [
+            "pickup_flowers"
+          ],
+          "status": "assigned"
+        },
+        "timestamp": 1771428544.8577988,
+        "type": "action"
+      },
+      {
+        "action": "assign_task",
+        "data": {
+          "assignment_id": "task_pickup_decorations_van",
+          "task_id": "pickup_decorations",
+          "assignee_id": "van",
+          "start_time": null,
+          "end_time": null,
+          "dependencies": [],
+          "status": "assigned"
+        },
+        "timestamp": 1771428546.495735,
+        "type": "action"
+      },
+      {
+        "action": "assign_task",
+        "data": {
+          "assignment_id": "task_pickup_photographer_van",
+          "task_id": "pickup_photographer",
+          "assignee_id": "van",
+          "start_time": null,
+          "end_time": null,
+          "dependencies": [
+            "pickup_decorations"
+          ],
+          "status": "assigned"
+        },
+        "timestamp": 1771428547.554424,
+        "type": "action"
+      }
+    ]
+  },
+  "success": true,
+  "error": null
+}
