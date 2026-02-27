@@ -142,9 +142,5 @@ We evaluated RAC against state-of-the-art solutions using two benchmarks:
 *   [**τ²-bench Repository**](https://anonymous.4open.science/r/tau2-bench-DD61/FEB-19-2026/)
 *   [**REALM-Bench-PLUS Repository**](https://anonymous.4open.science/r/REALM-Bench-PLUS-5A3A/FEB-19-2026)
 
-## 📄 References
-
-For full evaluation traces and detailed analysis, please refer to the `evaluation_results/` directory in the [REALM-Bench-PLUS repository](https://github.com/Kavirubc/REALM-Bench-PLUS).
-
 ---
 *Created for the RAC Research Project, 2026.*
