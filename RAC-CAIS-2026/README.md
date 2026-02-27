@@ -5,8 +5,8 @@
   ### Teaching AI Agents to Compensate
   
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-  [![Benchmark: τ²-bench](https://img.shields.io/badge/Benchmark-%CF%84%C2%B2--bench-blue)](https://github.com/Kavirubc/tau2-bench)
-  [![Benchmark: REALM-Bench](https://img.shields.io/badge/Benchmark-REALM--Bench-green)](https://github.com/Kavirubc/REALM-Bench-PLUS)
+  [![Benchmark: τ²-bench](https://img.shields.io/badge/Benchmark-%CF%84%C2%B2--bench-blue)](https://anonymous.4open.science/r/REALM-Bench-PLUS-5A3A/FEB-19-2026)
+  [![Benchmark: REALM-Bench](https://img.shields.io/badge/Benchmark-REALM--Bench-green)](https://anonymous.4open.science/r/tau2-bench-DD61/FEB-19-2026/)
 </div>
 
 ---
@@ -139,8 +139,8 @@ We evaluated RAC against state-of-the-art solutions using two benchmarks:
 
 ## 🔗 Links
 
-*   [**τ²-bench Repository**](https://github.com/Kavirubc/tau2-bench)
-*   [**REALM-Bench-PLUS Repository**](https://github.com/Kavirubc/REALM-Bench-PLUS)
+*   [**τ²-bench Repository**](https://anonymous.4open.science/r/tau2-bench-DD61/FEB-19-2026/)
+*   [**REALM-Bench-PLUS Repository**](https://anonymous.4open.science/r/REALM-Bench-PLUS-5A3A/FEB-19-2026)
 
 ## 📄 References
 
